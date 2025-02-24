@@ -37,4 +37,8 @@ const shopTab = document.getElementById('pills-shop-tab');
 shopTab.addEventListener('click', function() {
     changeTitle("Shopping");
 });
-const myModal = new bootstrap.Modal(document.getElementById('welcomeModal'), options)
+document.addEventListener("DOMContentLoaded", function () {
+   const modal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+   modal.show();
+});
+
