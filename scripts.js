@@ -20,7 +20,6 @@ textarea.addEventListener("input", () => {
 function updateCharCount() {
     charCount.textContent = `${textarea.value.length}/${maxChars}`;
 }
-
 function changeTitle(value) {
     document.title = "Disneyland Notepad | " + value;
 }
@@ -38,4 +37,4 @@ const shopTab = document.getElementById('pills-shop-tab');
 shopTab.addEventListener('click', function() {
     changeTitle("Shopping");
 });
-
+const myModal = new bootstrap.Modal(document.getElementById('welcomeModal'), options)
