@@ -84,6 +84,6 @@ html {
      width: fit-content;
 }
  #weatherHeader {
-     margin: auto;
+     text-align: center;
 }
  
