@@ -39,7 +39,7 @@ shopTab.addEventListener('click', function() {
 });
 const links = document.getElementsByTagName("a");
 for (let link of links) {
-    if (link.id !== "noNewTab") {
+    if (!link.classList.contains("noNewTab")) {
         link.setAttribute("target", "_blank");
     }
 }
