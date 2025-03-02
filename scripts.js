@@ -39,11 +39,12 @@ shopTab.addEventListener('click', function() {
 });
 document.querySelectorAll("a").forEach(link => {
     if (link.classList.contains("noNewTab")) {
-        link.removeAttribute("target"); // Ensure it doesn't open in a new tab
+        link.setAttribute("target", "_self"); // Force opening in the same tab
     } else {
         link.setAttribute("target", "_blank");
     }
 });
+
 
 
 
