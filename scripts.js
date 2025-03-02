@@ -41,7 +41,7 @@ const newsTab = document.getElementById('pills-news-tab');
 shopTab.addEventListener('click', function() {
     changeTitle("News");
 });
-const shopTab = document.getElementById('pills-pics-tab');
+const picsTab = document.getElementById('pills-pics-tab');
 shopTab.addEventListener('click', function() {
     changeTitle("Pictures");
 });
