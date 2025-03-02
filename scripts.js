@@ -37,11 +37,13 @@ const shopTab = document.getElementById('pills-shop-tab');
 shopTab.addEventListener('click', function() {
     changeTitle("Shopping");
 });
-const links = document.getElementsByTagName("a");
-for (let link of links) {
-    if (!link.classList.contains("noNewTab")) {
+document.querySelectorAll("a").forEach(link => {
+    if (link.classList.contains("noNewTab")) {
+        link.removeAttribute("target"); // Ensure it doesn't open in a new tab
+    } else {
         link.setAttribute("target", "_blank");
     }
-}
+});
+
 
 
