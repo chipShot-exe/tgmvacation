@@ -37,6 +37,14 @@ const shopTab = document.getElementById('pills-shop-tab');
 shopTab.addEventListener('click', function() {
     changeTitle("Shopping");
 });
+const newsTab = document.getElementById('pills-news-tab');
+shopTab.addEventListener('click', function() {
+    changeTitle("News");
+});
+const shopTab = document.getElementById('pills-pics-tab');
+shopTab.addEventListener('click', function() {
+    changeTitle("Pictures");
+});
 document.querySelectorAll("a").forEach(link => {
     if (link.classList.contains("noNewTab")) {
         link.setAttribute("target", "_self"); // Force opening in the same tab
