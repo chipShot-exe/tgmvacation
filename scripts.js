@@ -38,11 +38,11 @@ shopTab.addEventListener('click', function() {
     changeTitle("Shopping");
 });
 const newsTab = document.getElementById('pills-news-tab');
-shopTab.addEventListener('click', function() {
+newsTab.addEventListener('click', function() {
     changeTitle("News");
 });
 const picsTab = document.getElementById('pills-pics-tab');
-shopTab.addEventListener('click', function() {
+picsTab.addEventListener('click', function() {
     changeTitle("Pictures");
 });
 document.querySelectorAll("a").forEach(link => {
