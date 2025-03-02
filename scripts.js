@@ -37,3 +37,8 @@ const shopTab = document.getElementById('pills-shop-tab');
 shopTab.addEventListener('click', function() {
     changeTitle("Shopping");
 });
+const elements = document.querySelectorAll('a');
+
+for (let i = 0; i < elements.length; i++) {
+  elements[i].setAttribute('target', '_blank');
+}
