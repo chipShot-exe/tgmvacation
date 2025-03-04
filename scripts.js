@@ -1,5 +1,5 @@
 const textarea = document.getElementById("notes");
-const maxChars = 5242870; // Set your character limit here
+const maxChars = 5242870;
 const charCount = document.getElementById("charCount");
 const storageKey = "userNotes";
 
@@ -45,9 +45,10 @@ const picsTab = document.getElementById('pills-pics-tab');
 picsTab.addEventListener('click', function() {
     changeTitle("Pictures");
 });
+// All links except those excluded open in a new tab
 document.querySelectorAll("a").forEach(link => {
     if (link.classList.contains("noNewTab")) {
-        link.setAttribute("target", "_self"); // Force opening in the same tab
+        link.setAttribute("target", "_self"); 
     } else {
         link.setAttribute("target", "_blank");
     }
