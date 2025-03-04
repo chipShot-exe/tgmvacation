@@ -125,6 +125,7 @@ html {
             text-overflow: ellipsis;
             white-space: normal; /* Allows wrapping */
             margin-bottom: 0;
+            text-wrap: wrap;
         }
         .card-text small {
             font-size: 0.875rem;
