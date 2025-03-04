@@ -130,3 +130,7 @@ html {
         .card-text small {
             font-size: 0.875rem;
         }
+          #pics-pills {
+               overflow: hidden;
+          }
+
