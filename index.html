@@ -15,22 +15,20 @@
       <link rel="stylesheet" href="styles.css">
    </head>
    <body>
-      <div class="modal fade" id="welcomeModal" tabindex="-1" aria-hidden="true">
-         <div class="modal-dialog">
-            <div class="modal-content">
-               <div class="modal-header">
-                  <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel"><strong>Welcome to Disneyland Notepad!</strong></h1>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-               </div>
-               <div class="modal-body text-dark">
-                  Here you'll find some helpful tools and research I've done. Bear in mind that it is a work in progress, so at certain points things may not work as expected. With that said, I'm trying my best. Thanks for checking it out! <br> -Liam
-               </div>
-               <div class="modal-footer">
-                  <button type="button" class="btn btn-success" data-bs-dismiss="modal">Let's Go!</button>
-               </div>
-            </div>
-         </div>
-      </div>
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="...">
+      <strong class="me-auto">Welcome</strong>
+      <small>Now</small>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+Here you'll find some helpful tools and research I've done. Bear in mind that it is a work in progress, so at certain points things may not work as expected. With that said, I'm trying my best. Thanks for checking it out!
+-Liam
+    </div>
+  </div>
+</div>
       <div id="logo-container">
          <a href="index.html" class="noNewTab">
          <svg id="logo" class="align-top" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="192px" height="122px" viewBox="73.98263,140,1132.03008,400">
