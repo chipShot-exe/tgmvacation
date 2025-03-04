@@ -1,6 +1,6 @@
 const textarea = document.getElementById("notes");
 const maxChars = 5242870;
-const charCount = document.getElementById("charCount");
+let charCount = document.getElementById("charCount");
 const storageKey = "userNotes";
 
 // Fetch value from localStorage and populate textarea
