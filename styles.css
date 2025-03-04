@@ -88,5 +88,45 @@ html {
      text-align: center;
      padding-top: -20px;
 }
-
- 
+        .rss-container {
+            max-width: 900px;
+            margin: auto;
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+        .rss-item {
+            display: inline-block;
+            width: 300px;
+            margin-right: 15px;
+            vertical-align: top;
+        }
+        .card {
+            height: 350px; /* Explicit height for card */
+            display: flex;
+            flex-direction: column;
+        }
+        .card-body {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 15px;
+            overflow: hidden;
+        }
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+        }
+        .card-text {
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3; /* Limits text to 3 lines */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: normal; /* Allows wrapping */
+            margin-bottom: 0;
+        }
+        .card-text small {
+            font-size: 0.875rem;
+        }
