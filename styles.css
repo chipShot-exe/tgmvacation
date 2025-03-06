@@ -95,6 +95,7 @@ html {
             white-space: nowrap;
             padding: 10px;
             margin-bottom: 20px;
+            border: 2px solid #242059;
         }
         .rss-item {
             display: inline-block;
