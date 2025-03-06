@@ -120,8 +120,7 @@ html {
         .card-text {
             display: -webkit-box;
             -webkit-box-orient: vertical;
-            -webkit-line-clamp: 3; /* Limits text to 3 lines */
-            overflow: hidden;
+            -webkit-line-clamp: 3;
             text-overflow: ellipsis;
             white-space: normal; /* Allows wrapping */
             margin-bottom: 0;
