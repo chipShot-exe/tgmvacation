@@ -122,11 +122,13 @@ html {
      white-space: nowrap;
      overflow: hidden;
      text-overflow: ellipsis;
+     display: block;
+     width: 100%;
 }
  .card-text {
      display: -webkit-box;
      -webkit-box-orient: vertical;
-     -webkit-line-clamp: 4;
+     -webkit-line-clamp: 3;
      overflow: hidden;
      text-overflow: ellipsis;
      white-space: normal;
@@ -136,6 +138,13 @@ html {
 }
  .card-text small {
      font-size: 0.875rem;
+}
+ .card a {
+     display: block;
+     white-space: nowrap;
+     overflow: hidden;
+     text-overflow: ellipsis;
+     max-width: 100%;
 }
  #pics-pills {
      overflow: hidden;
