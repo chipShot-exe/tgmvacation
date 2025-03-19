@@ -56,3 +56,11 @@ document.querySelectorAll("a").forEach(link => {
 const toastLiveExample = document.getElementById('liveToast')
   const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
     toastBootstrap.show()
+document.addEventListener("DOMContentLoaded", function () {
+    // Set dark theme on the html element
+    document.documentElement.setAttribute("data-bs-theme", "dark");
+    document.querySelectorAll("iframe.no-dark").forEach(iframe => {
+        iframe.removeAttribute("data-bs-theme");
+        iframe.style.backgroundColor = "transparent";
+    });
+});
