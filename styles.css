@@ -154,3 +154,7 @@ html {
 html[data-bs-theme="dark"] iframe.no-dark {
   background-color: transparent !important;
 }
+#weatherLinkWrapper {
+     display: block;
+     width: 100%;
+}
