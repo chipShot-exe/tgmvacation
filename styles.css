@@ -87,6 +87,8 @@ html {
  #weatherHeader {
      text-align: center;
      padding-top: -20px;
+     margin-top: 20px;
+     margin-bottom: 20px;
 }
  .rss-container {
      max-width: 900px;
