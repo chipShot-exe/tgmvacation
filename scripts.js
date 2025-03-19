@@ -57,10 +57,30 @@ const toastLiveExample = document.getElementById('liveToast')
   const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
     toastBootstrap.show()
 document.addEventListener("DOMContentLoaded", function () {
-    // Set dark theme on the html element
+    // Apply dark theme to the HTML element
     document.documentElement.setAttribute("data-bs-theme", "dark");
-    document.querySelectorAll("iframe.no-dark").forEach(iframe => {
-        iframe.removeAttribute("data-bs-theme");
-        iframe.style.backgroundColor = "transparent";
+    
+    // Then override for elements with the .no-dark class
+    document.querySelectorAll(".no-dark").forEach(element => {
+        // Option 1: Override the theme attribute
+        element.setAttribute("data-bs-theme", "light");
+        
+        // Option 2: Force a transparent background (if that's the only issue)
+        element.style.backgroundColor = "transparent";
     });
+    
+    // Additionally, use a MutationObserver to catch any new elements with .no-dark added later
+    const observer = new MutationObserver(mutations => {
+        mutations.forEach(mutation => {
+            mutation.addedNodes.forEach(node => {
+                if (node.nodeType === 1 && node.classList && node.classList.contains("no-dark")) {
+                    node.emoveAttribute("data-bs-theme");
+                    node.style.backgroundColor = "transparent";
+                }
+            });
+        });
+    });
+    
+    observer.observe(document.documentElement, { childList: true, subtree: true });
 });
+
