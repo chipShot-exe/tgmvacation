@@ -76,15 +76,15 @@ Welcome! Here you'll find some helpful tools and research I've done. Bear in min
    </a>
       <h1>Disneyland Notepad</h1>
 
-<a class="weatherwidget-io d-block d-xs-none d-sm-none d-md-block d-lg-block d-xl-block d-xxl-block" href="https://weather.com/weather/today/l/dda086304f6b62200af6ebb1a07d3f15a8dacdf39c5a3a50996bacbc2416eb29" data-label_1="ANAHEIM" data-font="Helvetica" data-icons="Climacons Animated" data-theme="original" data-basecolor="rgba(31, 86, 124, 0)" >ANAHEIM</a>
+<a class="weatherwidget-io d-block d-xs-none d-sm-none d-md-block d-lg-block d-xl-block d-xxl-block" href="https://forecast7.com/en/33d84n117d91/anaheim/" data-label_1="ANAHEIM" data-font="Helvetica" data-icons="Climacons Animated" data-theme="original" data-basecolor="rgba(31, 86, 124, 0)" >ANAHEIM</a>
 <script>
 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
 </script>
-<a class="weatherwidget-io  d-none d-xs-block d-sm-block d-md-none" href="https://weather.com/weather/today/l/dda086304f6b62200af6ebb1a07d3f15a8dacdf39c5a3a50996bacbc2416eb29" data-label_1="ANAHEIM" data-font="Helvetica" data-icons="Climacons Animated" data-mode="Current" data-theme="original" data-basecolor="rgba(31, 86, 124, 0)" >ANAHEIM</a>
+<a class="weatherwidget-io  d-none d-xs-block d-sm-block d-md-none" href="https://forecast7.com/en/33d84n117d91/anaheim/" data-label_1="ANAHEIM" data-font="Helvetica" data-icons="Climacons Animated" data-mode="Current" data-theme="original" data-basecolor="rgba(31, 86, 124, 0)" >ANAHEIM</a>
 <script>
 !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
 </script>
-      <h5 id="weatherHeader"><small>Click for more information.</small></h5>
+      <a id="weatherHeader" href="https://weather.com/weather/today/l/dda086304f6b62200af6ebb1a07d3f15a8dacdf39c5a3a50996bacbc2416eb29"><small>Click for more information.</small></a>
       <div class="nav_container">
          <div class="tab-content">
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
@@ -96,9 +96,6 @@ Welcome! Here you'll find some helpful tools and research I've done. Bear in min
                </li>
                <li class="nav-item" role="presentation">
                   <button class="nav-link" id="pills-shop-tab" data-bs-toggle="pill" data-bs-target="#pills-shop" type="button" role="tab" aria-controls="pills-shop" aria-selected="false" ><i class="bi bi-bag-fill"></i> Shopping</button>
-               </li>
-               <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="pills-news-tab" data-bs-toggle="pill" data-bs-target="#pills-news" type="button" role="tab" aria-controls="pills-news" aria-selected="false" ><i class="bi bi-newspaper"></i> News</button>
                </li>
                <li class="nav-item" role="presentation">
                   <button class="nav-link" id="pills-pics-tab" data-bs-toggle="pill" data-bs-target="#pills-pics" type="button" role="tab" aria-controls="pills-tips" aria-selected="false" ><i class="bi bi-file-earmark-image"></i> Pictures</button>
@@ -174,72 +171,6 @@ Welcome! Here you'll find some helpful tools and research I've done. Bear in min
                      <li class="list-group-item">And a fifth one</li>
                   </ul>
                </div>
-               <div class="tab-pane fade" id="pills-news" role="tabpanel" aria-labelledby="pills-news-tab" tabindex="0">
-<div class="container mt-4">
-    <h2 class="text-center">Latest RSS Feeds</h2>
-
-    <!-- First RSS Feed Container -->
-    <div class="rss-container text-truncate rounded" id="rss-feed-1">
-        <p>Loading feed 1...</p>
-    </div>
-
-    <!-- Second RSS Feed Container -->
-    <div class="rss-container text-truncate rounded" id="rss-feed-2">
-        <p>Loading feed 2...</p>
-    </div>
-
-    <!-- Third RSS Feed Container -->
-    <div class="rss-container text-truncate rounded" id="rss-feed-3">
-        <p>Loading feed 3...</p>
-    </div>
-</div>
-
-<script>
-    async function fetchRSS(feedUrl, containerId) {
-        try {
-            const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`);
-            const data = await response.json();
-
-            if (data.status === 'ok') {
-                displayRSS(data.items, containerId);
-            } else {
-                document.getElementById(containerId).innerHTML = '<p>Error loading feed.</p>';
-            }
-        } catch (error) {
-            document.getElementById(containerId).innerHTML = '<p>Failed to fetch the RSS feed.</p>';
-        }
-    }
-
-    function displayRSS(items, containerId) {
-        const feedContainer = document.getElementById(containerId);
-        feedContainer.innerHTML = ''; // Clear loading text
-
-        items.forEach(item => {
-            const rssItem = document.createElement('div');
-            rssItem.classList.add('rss-item');
-            rssItem.innerHTML = `
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">
-                            <a href="${item.link}" target="_blank">${item.title}</a>
-                        </h5>
-                        <p class="card-text"><small>${item.pubDate}</small></p>
-                        <p class="card-text">${item.description.substring(0, 300)}...</p>
-                    </div>
-                </div>
-            `;
-            feedContainer.appendChild(rssItem);
-        });
-    }
-    const feedUrls = ['https://lhslog.com/feed','http://rss.cnn.com/rss/money_latest.rss','https://www.micechat.com/feed'];
-
-    // Fetch and display the RSS feeds for each container
-    fetchRSS(feedUrls[1], 'rss-feed-1');
-    fetchRSS(feedUrls[2], 'rss-feed-2');
-    fetchRSS(feedUrls[3], 'rss-feed-3');
-</script>
-            </div>
-         </div>
                   <div class="tab-pane fade" id="pills-pics" role="tabpanel" aria-labelledby="pills-pics-tab" tabindex="0">
 <div class="row">
 	<a href="https://unsplash.it/1200/768.jpg?image=251" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
@@ -299,10 +230,10 @@ Welcome! Here you'll find some helpful tools and research I've done. Bear in min
 
       <!-- Section 2 -->
       <div class="col mb-3">
-         <h5>Section 2</h5>
+         <h5>News</h5>
          <ul class="nav flex-column">
             <li class="nav-item mb-2 linkFit">
-               <a href="#" class="link-underline-dark link-offset-3 nav-link p-0 text-body-secondary" data-bs-toggle="tooltip" data-bs-title="Check back here later for some useful links!">Coming soon!</a>
+               <a href="https://disneyparksblog.com/dlr/" class="link-underline-dark link-offset-3 nav-link p-0">Official Disney Parks blog</a>
             </li>
             <li class="nav-item mb-2 linkFit">
                <a href="#" class="link-underline-dark link-offset-3 nav-link p-0 text-body-secondary" data-bs-toggle="tooltip" data-bs-title="Check back here later for some useful links!">Coming soon!</a>
