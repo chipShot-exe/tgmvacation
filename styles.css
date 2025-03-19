@@ -157,4 +157,5 @@ html[data-bs-theme="dark"] iframe.no-dark {
 #weatherLinkWrapper {
      display: block;
      width: 100%;
+     text-align: center;
 }
