@@ -151,6 +151,6 @@ html {
  #pics-pills {
      overflow: hidden;
 }
-iframe.no-dark {
-    background-color: transparent !important;
+html[data-bs-theme="dark"] iframe.no-dark {
+  background-color: transparent !important;
 }
