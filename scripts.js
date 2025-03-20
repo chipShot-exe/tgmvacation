@@ -37,10 +37,6 @@ const shopTab = document.getElementById('pills-shop-tab');
 shopTab.addEventListener('click', function() {
     changeTitle("Shopping");
 });
-const newsTab = document.getElementById('pills-news-tab');
-newsTab.addEventListener('click', function() {
-    changeTitle("News");
-});
 const picsTab = document.getElementById('pills-pics-tab');
 picsTab.addEventListener('click', function() {
     changeTitle("Pictures");
