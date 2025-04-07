@@ -13,6 +13,8 @@
       <link rel="stylesheet" href="styles.css">
    </head>
    <body>
+	<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+<div id="qrcode"></div>
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
   <div id="liveToast" class="toast show bg-dark text-white" role="alert" aria-live="assertive" aria-atomic="true" data-bs-theme="dark">
     <div class="toast-header">
@@ -84,6 +86,7 @@ Welcome! Here you'll find some helpful tools and research I've done. Bear in min
       </div>
 	   <div class="nav_container">
          <div class="tab-content">
+		<!-- Tabs --> 
             <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                <li class="nav-item" role="presentation">
                   <button class="nav-link active" id="pills-tips-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-tips" aria-selected="true" ><i class="bi bi-exclamation-circle-fill"></i> Tips</button>
@@ -100,6 +103,9 @@ Welcome! Here you'll find some helpful tools and research I've done. Bear in min
             </li>
             <li class="nav-item" role="presentation">
                <button class="nav-link" id="pills-recent-tab" data-bs-toggle="pill" data-bs-target="#pills-updates" type="button" role="tab" aria-controls="pills-updates" aria-selected="false" ><i class="bi bi-info-square"></i>  Updates</button>
+            </li>
+	    <li class="nav-item" role="presentation">
+               <button class="nav-link" id="pills-qr-tab" data-bs-toggle="pill" data-bs-target="#pills-qrcode" type="button" role="tab" aria-controls="pills-qrcode" aria-selected="false" ><i class="bi bi-qr-code"></i>  QR code</button>
             </li>
             </ul>
             <div class="tab-content" id="pills-tabContent">
@@ -203,6 +209,31 @@ Welcome! Here you'll find some helpful tools and research I've done. Bear in min
                Weather report is now fully functional
             </li>
          </ul>
+      </div>
+     <div class="tab-pane fade show" id="pills-qrcode" role="tabpanel" aria-labelledby="pills-qr-tab" tabindex="0">
+<div class="input-group mb-3">
+  <input type="url" class="form-control" id="qrInput" placeholder="https://example.com">
+  <label for="qrInput">Url or text for QR code</label>
+  <button class="button btn-outline" type="button" id="qrSubmit">Generate</button>
+  <script>
+var qrInput = document.getElementById("qrInput").value;
+function generateQR(input) {
+const qrcode = new QRCode(document.getElementById('qrcode'), {
+  text: input,
+  width: 128,
+  height: 128,
+  colorDark : '#000',
+  colorLight : '#fff',
+  correctLevel : QRCode.CorrectLevel.H
+});
+}
+const submitBtn = document.getElementById("qrSubmit");
+submitBtn.addEventListener("click", function (e) {
+generateQR ("qrInput");
+});
+  </script>
+<div id="qrcode"></div>
+</div>
       </div>
       </div>
       </div>
