@@ -156,3 +156,6 @@ html {
 iframe.no-dark {
     background-color: transparent !important;
 }
+#qrForm {
+     padding: 20px;
+}
