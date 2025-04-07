@@ -218,7 +218,9 @@ Welcome! Here you'll find some helpful tools and research I've done. Bear in min
 </div>
   <script>
 function generateQR(input) {
-const qrcode = new QRCode(document.getElementById('qrcode'), {
+var qrcode = document.getElementById('qrcode')
+qrcode.innerHTML = '';
+qrcode = new QRCode(document.getElementById('qrcode'), {
   text: input,
   width: 128,
   height: 128,
@@ -227,7 +229,6 @@ const qrcode = new QRCode(document.getElementById('qrcode'), {
   correctLevel : QRCode.CorrectLevel.H
 });
 }
-qrcode.innerHTML = '';
 const submitBtn = document.getElementById("qrSubmit");
 submitBtn.addEventListener("click", function (e) {
 var qrInput = document.getElementById("qrInput").value;
