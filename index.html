@@ -246,11 +246,9 @@ function generateQR(input) {
 
     qrCode.append(document.getElementById("qrCanvas"));
 });
-}
 const submitBtn = document.getElementById("qrSubmit");
 submitBtn.addEventListener("click", function (e) {
-var qrInput = document.getElementById("qrInput").value;
-generateQR (qrInput);
+generateQR (document.getElementById("qrInput"));
 });
   </script>
      </div>
