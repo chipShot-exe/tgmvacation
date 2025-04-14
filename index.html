@@ -245,6 +245,7 @@ function generateQR(input) {
     });
 
     qrCode.append(document.getElementById("qrCanvas"));
+    qrCode.download({ name: "qr", extension: "svg" });
 };
 const submitBtn = document.getElementById("qrSubmit");
 submitBtn.addEventListener("click", function (e) {
