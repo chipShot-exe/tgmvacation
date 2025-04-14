@@ -13,7 +13,7 @@
       <link rel="stylesheet" href="styles.css">
    </head>
    <body>
-	<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
 <div id="qrcode"></div>
 <div class="toast-container position-fixed bottom-0 end-0 p-3">
   <div id="liveToast" class="toast show bg-dark text-white" role="alert" aria-live="assertive" aria-atomic="true" data-bs-theme="dark">
@@ -215,18 +215,36 @@ Welcome! Here you'll find some helpful tools and research I've done. Bear in min
 <div class="input-group mb-3" id="qrForm">
   <input type="text" class="form-control" id="qrInput" placeholder="https://example.com" style="float: left;">
   <button class="btn btn-primary" type="button" id="qrSubmit">Generate</button>
+	<div id="qrCanvas"></div>
 </div>
   <script>
 function generateQR(input) {
-var qrcode = document.getElementById('qrcode')
-qrcode.innerHTML = '';
-qrcode = new QRCode(document.getElementById('qrcode'), {
-  text: input,
-  width: 128,
-  height: 128,
-  colorDark : '#000',
-  colorLight : '#fff',
-  correctLevel : QRCode.CorrectLevel.H
+    const qrCode = new QRCodeStyling({
+        width: 300,
+        height: 300,
+        type: "svg",
+        data: input,
+        image: "http://thecraftchop.com/files/images/castle-lines.svg",
+        dotsOptions: {
+            color: "#000000",
+            type: "rounded"
+        },
+        backgroundOptions: {
+            color: "rgba(255, 255, 255, 0)",
+        },
+        imageOptions: {
+            crossOrigin: "anonymous",
+            margin: 20
+        },
+	cornersSquareOptions: {
+	    type: "extra-rounded",
+	},
+	cornersDotOptions: {
+	    type: "dot",    
+	}
+    });
+
+    qrCode.append(document.getElementById("qrCanvas"));
 });
 }
 const submitBtn = document.getElementById("qrSubmit");
@@ -235,7 +253,6 @@ var qrInput = document.getElementById("qrInput").value;
 generateQR (qrInput);
 });
   </script>
-<div id="qrcode" style="display: block;"></div>
      </div>
       </div>
       </div>
