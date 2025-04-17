@@ -132,7 +132,7 @@ html {
  .card-text {
      display: -webkit-box;
      -webkit-box-orient: vertical;
-     -webkit-line-clamp: 3;
+     line-clamp: 3;
      overflow: hidden;
      text-overflow: ellipsis;
      white-space: normal;
@@ -159,9 +159,10 @@ iframe.no-dark {
 #qrForm {
      padding: 20px;
 }
-#qrCanvas{
+#qrWrap{
      width:100%;
 }
-#qrCanvas > svg {
+#qrCanvas{
      margin: auto;
+     padding: 10px;
 }
