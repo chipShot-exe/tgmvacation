@@ -218,12 +218,14 @@
                   <input type="text" class="form-control" id="qrInput" placeholder="https://example.com" style="float: left;">
                   <button class="btn btn-primary" type="button" id="qrSubmit">Generate</button>
                </div>
-               <div id="qrCanvas"></div>
+               <div id="qrWrap"><div id="qrCanvas"></div></div>
                <script>
                   function generateQR() {
-                     const qrdata = document.getElementById("qrInput")
+                     const wrapper = document.getElementById("qrWrap");
+                     const qrdata = document.getElementById("qrInput");
+                     wrapper.innerHTML ="";
                      const qrcode = new QRCode(document.getElementById("qrCanvas"), {
-  text: qrInput.value,
+  text: qrdata.value,
   width: 300,
   height: 300,
   colorDark : "#000000",
