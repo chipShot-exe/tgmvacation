@@ -220,21 +220,20 @@
                </div>
                <div id="qrCanvas"></div>
                <script>
-                  function generateQR(qrdata) {
+                  function generateQR() {
+                     const qrdata = document.getElementById("qrInput")
                      const qrcode = new QRCode(document.getElementById("qrCanvas"), {
-  text: "qrdata",
+  text: qrInput.value,
   width: 300,
   height: 300,
   colorDark : "#000000",
   colorLight : "#ffffff",
   correctLevel : QRCode.CorrectLevel.H
 });
-    });
-
-                  };
+    };
                   const submitBtn = document.getElementById("qrSubmit");
                   submitBtn.addEventListener("click", function (e) {
-                  generateQR (document.getElementById("qrInput"));
+                  generateQR ();
                   });
                     
                </script>
