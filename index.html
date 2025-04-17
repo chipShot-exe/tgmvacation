@@ -221,10 +221,10 @@
                <div id="qrWrap"><div id="qrCanvas"></div></div>
                <script>
                   function generateQR() {
-                     const wrapper = document.getElementById("qrWrap");
+                     const canvas = document.getElementById("qrCanvas");
                      const qrdata = document.getElementById("qrInput");
-                     wrapper.innerHTML ="";
-                     const qrcode = new QRCode(document.getElementById("qrCanvas"), {
+                     canvas.innerHTML ="";
+                     const qrcode = new QRCode(canvas, {
   text: qrdata.value,
   width: 300,
   height: 300,
