@@ -17,9 +17,6 @@ textarea.addEventListener("input", () => {
     updateCharCount();
 });
 
-function updateCharCount() {
-    charCount.textContent = `${textarea.value.length}/${maxChars}`;
-}
 function changeTitle(value) {
     document.title = "Disneyland Notepad | " + value;
 }
@@ -37,13 +34,18 @@ const shopTab = document.getElementById('pills-shop-tab');
 shopTab.addEventListener('click', function() {
     changeTitle("Shopping");
 });
-const newsTab = document.getElementById('pills-news-tab');
+const newsTab = document.getElementById('pills-updates');
 newsTab.addEventListener('click', function() {
-    changeTitle("News");
+    changeTitle("Updates");
 });
 const picsTab = document.getElementById('pills-pics-tab');
 picsTab.addEventListener('click', function() {
     changeTitle("Pictures");
+});
+
+const qrTab = document.getElementById('pills-qrcode');
+qrTab.addEventListener('click', function() {
+    changeTitle("QR code");
 });
 // All links except those excluded open in a new tab
 document.querySelectorAll("a").forEach(link => {

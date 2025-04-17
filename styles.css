@@ -167,3 +167,6 @@ iframe.no-dark {
      margin: auto;
      padding: 10px;
 }
+#qrCanvas > img {
+     margin: auto;
+}
