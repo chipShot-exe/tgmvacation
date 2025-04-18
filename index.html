@@ -210,40 +210,65 @@
             </div>
             <div class="tab-pane fade show" id="pills-qrcode" role="tabpanel" aria-labelledby="pills-qr-tab" tabindex="0">
                <h2>Url or text:</h2>
-               <div class="input-group mb-3" id="qrForm">
-                  <input type="text" class="form-control" id="qrInput" placeholder="https://example.com" style="float: left;">
-                  <button class="btn btn-primary" type="button" id="qrSubmit">Generate</button>
-               </div>
-               <div id="qrWrap"><div id="qrCanvas"></div></div>
-               <script>
-                  function generateQR() {
-                     const canvas = document.getElementById("qrCanvas");
-                     const qrdata = document.getElementById("qrInput");
-                     canvas.innerHTML ='';
-                     const qrcode = new QRCode(canvas, {
-  text: qrdata.value,
-  width: 300,
-  height: 300,
-  colorDark : "#000000",
-  colorLight : "#ffffff",
-  correctLevel : QRCode.CorrectLevel.H
-});
-canvas.insertAdjacentHTML('beforeend', `<div id="qr-options-wrap"><div class="btn-group" role="group" id="qr-options-group"aria-label="QR code options">
-  <button type="button" class="btn btn-outline-success" aria-label="Copy"><i class="bi bi-copy"></i></button>
-  <button type="button" class="btn btn-outline-success" aria-label="Download"><i class="bi bi-download"></i></button>
-  <a href="" id="qrdl" download>test</a>
-</div></div>`);
-var src = document.querySelector("#qrCanvas > img").src
-const dlink = document.querySelector("#qrdl")
-dlink.setAttribute('href', src);
-    };
-                  const submitBtn = document.getElementById("qrSubmit");
-                  submitBtn.addEventListener("click", function (e) {
-                  generateQR ();
-                  });
-                    
-               </script>
-            </div>
+<div class="input-group mb-3" id="qrForm">
+  <input type="text" class="form-control" id="qrInput" placeholder="https://example.com">
+  <button class="btn btn-primary" type="button" id="qrSubmit">Generate</button>
+</div>
+
+<div id="qrWrap">
+  <div id="qrCanvas"></div>
+</div>
+
+<script>
+  function generateQR() {
+    const canvas = document.getElementById("qrCanvas");
+    const qrdata = document.getElementById("qrInput").value.trim();
+    canvas.innerHTML = '';
+
+    if (!qrdata) {
+      alert("Please enter a URL or text to generate QR code.");
+      return;
+    }
+
+    const qrcode = new QRCode(canvas, {
+      text: qrdata,
+      width: 300,
+      height: 300,
+      colorDark: "#000000",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.H
+    });
+
+    // Delay to allow QRCode to render
+    setTimeout(() => {
+      const img = canvas.querySelector("img");
+      const src = img?.src;
+
+      if (!src) return;
+
+      canvas.insertAdjacentHTML('beforeend', `
+        <div id="qr-options-wrap" class="mt-2">
+          <div class="btn-group" role="group" id="qr-options-group" aria-label="QR code options">
+            <button type="button" class="btn btn-outline-success" id="copyBtn" aria-label="Copy">
+              <i class="bi bi-copy"></i> Copy
+            </button>
+            <a href="${src}" id="qrdl" download="qr-code.png" class="btn btn-outline-success" aria-label="Download">
+              <i class="bi bi-download"></i> Download
+            </a>
+          </div>
+        </div>
+      `);
+
+      document.getElementById("copyBtn").addEventListener("click", () => {
+        navigator.clipboard.writeText(qrdata)
+          .then(() => alert("Copied to clipboard!"))
+          .catch(err => alert("Failed to copy: " + err));
+      });
+    }, 100);
+  }
+
+  document.getElementById("qrSubmit").addEventListener("click", generateQR);
+</script>
          </div>
       </div>
       </div>
