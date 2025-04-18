@@ -260,20 +260,46 @@
  
        // Add image copying logic
        document.getElementById("copyBtn").addEventListener("click", () => {
-         fetch(src)
-           .then(res => res.blob())
-           .then(blob => {
-             const item = new ClipboardItem({ [blob.type]: blob });
-             return navigator.clipboard.write([item]);
-           })
-           .then(() => alert("QR code image copied to clipboard!"))
-           .catch(err => alert("Failed to copy image: " + err));
-       });
+  const img = document.querySelector("#qrCanvas img");
+
+  if (!img) {
+    alert("QR image not found!");
+    return;
+  }
+
+  // Create a canvas and draw the image on it
+  const tempCanvas = document.createElement("canvas");
+  const ctx = tempCanvas.getContext("2d");
+  tempCanvas.width = img.naturalWidth;
+  tempCanvas.height = img.naturalHeight;
+
+  const image = new Image();
+  image.crossOrigin = "anonymous"; // For safety
+  image.onload = () => {
+    ctx.drawImage(image, 0, 0);
+
+    // Convert canvas to blob and copy to clipboard
+    tempCanvas.toBlob((blob) => {
+      if (!blob) {
+        alert("Failed to convert QR code to image.");
+        return;
+      }
+
+      const item = new ClipboardItem({ [blob.type]: blob });
+      navigator.clipboard.write([item])
+        .then(() => alert("QR code image copied to clipboard!"))
+        .catch((err) => alert("Copy failed: " + err));
+    }, "image/png");
+  };
+
+  image.src = img.src;
+});
      }, 100);
    }
  
    document.getElementById("qrSubmit").addEventListener("click", generateQR);
- </script> 
+ </script>
+ 
          </div>
       </div>
       </div>
