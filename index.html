@@ -228,12 +228,14 @@
   colorLight : "#ffffff",
   correctLevel : QRCode.CorrectLevel.H
 });
-var src = document.querySelector("#qrCanvas > img").src
 canvas.insertAdjacentHTML('beforeend', `<div id="qr-options-wrap"><div class="btn-group" role="group" id="qr-options-group"aria-label="QR code options">
   <button type="button" class="btn btn-outline-success" aria-label="Copy"><i class="bi bi-copy"></i></button>
   <button type="button" class="btn btn-outline-success" aria-label="Download"><i class="bi bi-download"></i></button>
-  <a href="${src}" download>test</a>
+  <a href="" id="qrdl" download>test</a>
 </div></div>`);
+var src = document.querySelector("#qrCanvas > img").src
+const dlink = document.querySelector("#qrdl")
+dlink.setAttribute('href', src);
     };
                   const submitBtn = document.getElementById("qrSubmit");
                   submitBtn.addEventListener("click", function (e) {
