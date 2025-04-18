@@ -170,3 +170,9 @@ iframe.no-dark {
 #qrCanvas > img {
      margin: auto;
 }
+#qr-options-wrap{
+     width:100%;
+}
+#qr-options-group{
+     margin: auto;
+}

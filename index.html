@@ -228,10 +228,10 @@
   colorLight : "#ffffff",
   correctLevel : QRCode.CorrectLevel.H
 });
-canvas.insertAdjacentHTML('beforeend', `<div class="btn-group" role="group" aria-label="Basic outlined example">
+canvas.insertAdjacentHTML('beforeend', `<div id="qr-options-wrap"><div class="btn-group" role="group" id="qr-options-group"aria-label="QR code options">
   <button type="button" class="btn btn-outline-success" aria-label="Copy"><i class="bi bi-copy"></i></button>
   <button type="button" class="btn btn-outline-success" aria-label="Download"><i class="bi bi-download"></i></button>
-</div>`);
+</div></div>`);
     };
                   const submitBtn = document.getElementById("qrSubmit");
                   submitBtn.addEventListener("click", function (e) {
