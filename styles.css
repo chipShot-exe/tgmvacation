@@ -172,7 +172,10 @@ iframe.no-dark {
 }
 #qr-options-wrap{
      width:100%;
+     display: flex;
+     justify-content: center;
+     align-items:center;
 }
 #qr-options-group{
-     margin: auto;
+     padding: 15px
 }
