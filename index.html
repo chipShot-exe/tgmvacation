@@ -219,7 +219,7 @@
                   function generateQR() {
                      const canvas = document.getElementById("qrCanvas");
                      const qrdata = document.getElementById("qrInput");
-                     canvas.innerHTML ="";
+                     canvas.innerHTML ='';
                      const qrcode = new QRCode(canvas, {
   text: qrdata.value,
   width: 300,
@@ -228,6 +228,10 @@
   colorLight : "#ffffff",
   correctLevel : QRCode.CorrectLevel.H
 });
+canvas.insertAdjacentHTML('beforeend', `<div class="btn-group" role="group" aria-label="Basic outlined example">
+  <button type="button" class="btn btn-outline-success" aria-label="Copy"><i class="bi bi-copy"></i></button>
+  <button type="button" class="btn btn-outline-success" aria-label="Download"><i class="bi bi-download"></i></button>
+</div>`);
     };
                   const submitBtn = document.getElementById("qrSubmit");
                   submitBtn.addEventListener("click", function (e) {
