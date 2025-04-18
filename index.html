@@ -220,55 +220,60 @@
 </div>
 
 <script>
-  function generateQR() {
-    const canvas = document.getElementById("qrCanvas");
-    const qrdata = document.getElementById("qrInput").value.trim();
-    canvas.innerHTML = '';
-
-    if (!qrdata) {
-      alert("Please enter a URL or text to generate QR code.");
-      return;
-    }
-
-    const qrcode = new QRCode(canvas, {
-      text: qrdata,
-      width: 300,
-      height: 300,
-      colorDark: "#000000",
-      colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.H
-    });
-
-    // Delay to allow QRCode to render
-    setTimeout(() => {
-      const img = canvas.querySelector("img");
-      const src = img?.src;
-
-      if (!src) return;
-
-      canvas.insertAdjacentHTML('beforeend', `
-        <div id="qr-options-wrap" class="mt-2">
-          <div class="btn-group" role="group" id="qr-options-group" aria-label="QR code options">
-            <button type="button" class="btn btn-outline-success" id="copyBtn" aria-label="Copy">
-              <i class="bi bi-copy"></i> Copy
-            </button>
-            <a href="${src}" id="qrdl" download="qr-code.png" class="btn btn-outline-success" aria-label="Download">
-              <i class="bi bi-download"></i> Download
-            </a>
-          </div>
-        </div>
-      `);
-
-      document.getElementById("copyBtn").addEventListener("click", () => {
-        navigator.clipboard.writeText(qrdata)
-          .then(() => alert("Copied to clipboard!"))
-          .catch(err => alert("Failed to copy: " + err));
-      });
-    }, 100);
-  }
-
-  document.getElementById("qrSubmit").addEventListener("click", generateQR);
-</script>
+   function generateQR() {
+     const canvas = document.getElementById("qrCanvas");
+     const qrdata = document.getElementById("qrInput").value.trim();
+     canvas.innerHTML = '';
+ 
+     if (!qrdata) {
+       alert("Please enter a URL or text to generate QR code.");
+       return;
+     }
+ 
+     const qrcode = new QRCode(canvas, {
+       text: qrdata,
+       width: 300,
+       height: 300,
+       colorDark: "#000000",
+       colorLight: "#ffffff",
+       correctLevel: QRCode.CorrectLevel.H
+     });
+ 
+     setTimeout(() => {
+       const img = canvas.querySelector("img");
+       const src = img?.src;
+ 
+       if (!src) return;
+ 
+       canvas.insertAdjacentHTML('beforeend', `
+         <div id="qr-options-wrap" class="mt-2">
+           <div class="btn-group" role="group" id="qr-options-group" aria-label="QR code options">
+             <button type="button" class="btn btn-outline-success" id="copyBtn" aria-label="Copy">
+               <i class="bi bi-copy"></i> Copy
+             </button>
+             <a href="${src}" id="qrdl" download="qr-code.png" class="btn btn-outline-success" aria-label="Download">
+               <i class="bi bi-download"></i> Download
+             </a>
+           </div>
+         </div>
+       `);
+ 
+       // Add image copying logic
+       document.getElementById("copyBtn").addEventListener("click", () => {
+         fetch(src)
+           .then(res => res.blob())
+           .then(blob => {
+             const item = new ClipboardItem({ [blob.type]: blob });
+             return navigator.clipboard.write([item]);
+           })
+           .then(() => alert("QR code image copied to clipboard!"))
+           .catch(err => alert("Failed to copy image: " + err));
+       });
+     }, 100);
+   }
+ 
+   document.getElementById("qrSubmit").addEventListener("click", generateQR);
+ </script> 
          </div>
       </div>
       </div>
