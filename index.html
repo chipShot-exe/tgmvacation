@@ -190,14 +190,30 @@
                      </a>
                   </div>
                   <div class="row">
-                     <a href="imgs/Martins at Cinderella castle resized.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                     <img src="imgs/Martins at Cinderella castle resized.jpg" class="img-fluid">
+                     <a href="imgs/PXL_20230221_174405936.MP.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                     <img src="imgsCropped/(CROP)PXL_20230221_174405936.MP.jpg" class="img-fluid">
                      </a>
-                     <a href="https://unsplash.it/1200/768.jpg?image=255" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                     <img src="https://unsplash.it/600.jpg?image=255" class="img-fluid">
+                     <a href="imgs/PXL_20230221_182926651.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                     <img src="imgsCropped/(CROP)PXL_20230221_182926651.jpg" class="img-fluid">
                      </a>
-                     <a href="https://unsplash.it/1200/768.jpg?image=256" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
-                     <img src="https://unsplash.it/600.jpg?image=256" class="img-fluid">
+                     <a href="imgs/PXL_20230222_041050839.MP.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                     <img src="imgsCropped/(CROP)PXL_20230222_041050839.MP.jpg" class="img-fluid">
+                     </a>
+                  </div>
+                  <div class="row">
+                     <a href="imgs/PXL_20230223_214842406.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                     <img src="imgsCropped/(CROP)PXL_20230223_214842406.jpg" class="img-fluid">
+                     </a>
+                     <a href="imgs/PXL_20230224_154115296.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                     <img src="imgsCropped/(CROP)PXL_20230224_154115296.jpg" class="img-fluid">
+                     </a>
+                     <a href="imgs/PXL_20230224_170743731.MP.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                     <img src="imgsCropped/(CROP)PXL_20230224_170743731.MP.jpg" class="img-fluid">
+                     </a>
+                  </div>
+                  <div class="row">
+                     <a href="imgs/PXL_20230225_015441912.MP.jpg" data-toggle="lightbox" data-gallery="example-gallery" class="col-sm-4">
+                     <img src="imgsCropped/(CROP)PXL_20230225_015441912.MP.jpg" class="img-fluid">
                      </a>
                   </div>
                </div>
@@ -227,11 +243,12 @@
        alert("Please enter a URL or text to generate QR code.");
        return;
      }
- 
-     const qrcode = new QRCode(canvas, {
+      const containerWidth = document.getElementById("qrCanvas").offsetWidth;
+      const qrSize = Math.min(containerWidth * 0.9, 300);
+      const qrcode = new QRCode(canvas, {
        text: qrdata,
-       width: 300,
-       height: 300,
+       width: qrSize,
+       height: qrSize,
        colorDark: "#000000",
        colorLight: "#ffffff",
        correctLevel: QRCode.CorrectLevel.H
