@@ -55,6 +55,17 @@ document.querySelectorAll("a").forEach(link => {
         link.setAttribute("target", "_blank");
     }
 });
-const toastLiveExample = document.getElementById('liveToast')
-  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-    toastBootstrap.show()
+const toastLiveExample = document.getElementById('liveToast');
+  const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+    toastBootstrap.show();
+const snippets = ["<div>It's a Small World has a sun and moon in every room, because everyone lives under the same sky.</div>","<div>Disneyland opened on July 17th, 1955</div>",];
+const quoteWrap = document.getElementById("snippet");
+const randomIndex = Math.floor(Math.random() * snippets.length);
+quoteWrap.innerHtml = snippets[randomIndex];
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(reg => console.log('SW registered:', reg.scope))
+      .catch(err => console.error('SW registration failed:', err));
+  });
+}
