@@ -10,6 +10,8 @@
       <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap" rel="stylesheet">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
       <link rel="icon" type="image/x-icon" href="faviconNew.ico">
+      <link rel="manifest" href="manifest.json">
+      <meta name="theme-color" content="#4CAF50">
       <link rel="stylesheet" href="styles.css">
    </head>
    <body>
@@ -19,13 +21,12 @@
          <div id="liveToast" class="toast show bg-dark text-white" role="alert" aria-live="assertive" aria-atomic="true" data-bs-theme="dark">
             <div class="toast-header">
                <i class="bi bi-send-exclamation"></i>
-               <strong class="me-auto">&nbspDisneyland Notepad</strong>
+               <strong class="me-auto">&nbsp Disneyland Notepad</strong>
                <small>just now</small>
                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
             </div>
             <div class="toast-body">
                Welcome! Here you'll find some helpful tools and research I've done. Bear in mind that it is a work in progress, so at certain points things may not work as expected. With that said, I'm trying my best. Thanks for checking it out!
-               <br>-&nbspLiam
             </div>
          </div>
       </div>
@@ -75,6 +76,7 @@
       </div>
       </a>
       <h1>Disneyland Notepad</h1>
+	  <h2 id="snippet"></h2>
       <a class="weatherwidget-io d-none d-md-block no-dark" href="https://forecast7.com/en/33d84n117d91/anaheim/?unit=us" data-label_1="ANAHEIM" data-font="Helvetica" data-icons="Climacons Animated" data-theme="original" data-basecolor="rgba(31, 86, 124, 0)" >ANAHEIM</a>
       <script>
          !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
@@ -171,7 +173,7 @@
                         <img class="shop-img w-25"src="https://m.media-amazon.com/images/I/61UV+f3WwsL._AC_UF894,1000_QL80_.jpg">
                         <p><strong>Fuelrod</strong><br>You think it's a normal powerbank until you realize you can swap it for a charged one for free anywhere around Disneyland (or another Disney park!).<br><a class="btn btn-primary" target="_blank"href="https://fuel-rod.com" role="button">Vist FuelRod!</a></p>
                      </li>
-                     <li class="list-group-item"><img class="shop-image w-25"src="https://m.media-amazon.com/images/I/813Uiyud7VL._AC_UF1000,1000_QL80_FMwebp_.jpg"<p><strong>Unofficial guide to Disneyland 2025</strong><br>A comprehensive and objective guide giving tips ans information that’s hard to find anywhere else.<br><a class="btn btn-primary" target="_blank"href="https://www.amazon.com/Unofficial-Guide-Disneyland-2025-Guides/dp/162809155X/ref=asc_df_162809155X?mcid=11c320580e6d3e5fb9756b19bffed4bd&hvocijid=8356027642027707163-162809155X-&hvexpln=73&tag=hyprod-20&linkCode=df0&hvadid=721245378154&hvpos=&hvnetw=g&hvrand=8356027642027707163&hvpone=&hvptwo=&hvqmt=&hvdev=m&hvdvcmdl=&hvlocint=&hvlocphy=9033322&hvtargid=pla-2281435178298&psc=1" role="button">Check out Unofficial Guides!</a></p>
+                     <li class="list-group-item"><img class="shop-image w-25"src="https://m.media-amazon.com/images/I/813Uiyud7VL._AC_UF1000,1000_QL80_FMwebp_.jpg"<p><strong>Unofficial guide to Disneyland 2025</strong><br>A comprehensive and objective guide giving tips and information that’s hard to find anywhere else.<br><a class="btn btn-primary" target="_blank"href="https://www.amazon.com/Unofficial-Guide-Disneyland-2025-Guides/dp/162809155X/ref=asc_df_162809155X?mcid=11c320580e6d3e5fb9756b19bffed4bd&hvocijid=8356027642027707163-162809155X-&hvexpln=73&tag=hyprod-20&linkCode=df0&hvadid=721245378154&hvpos=&hvnetw=g&hvrand=8356027642027707163&hvpone=&hvptwo=&hvqmt=&hvdev=m&hvdvcmdl=&hvlocint=&hvlocphy=9033322&hvtargid=pla-2281435178298&psc=1" role="button">Check out Unofficial Guides!</a></p>
                   </li>
                   </ul>
                </div>
@@ -368,7 +370,6 @@
                </ul>
             </div>
          </footer>
-      </div>
       </div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
