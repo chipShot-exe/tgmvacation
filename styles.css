@@ -66,10 +66,10 @@ html {
      padding-bottom: 5px;
 }
  .shop-img {
-     width: 75%;
+     height: 10vh;
      float: left;
-     padding: 20px;
-	 margin: 20px;
+     margin: 1rem;
+     border-radius: 0.5rem;
 }
  #pills-profile {
      margin-bottom: 0%;
