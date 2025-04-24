@@ -71,15 +71,17 @@ if ('serviceWorker' in navigator) {
 }
 let installPrompt = null;
 const installButton = document.querySelector("#install");
+const installHeader = document.querySelector("#installHeader")
 
 window.addEventListener("beforeinstallprompt", (event) => {
   event.preventDefault();
   installPrompt = event;
-  installButton.removeAttribute("hidden");
+  installHeader.removeAttribute("hidden");
 });
 function disableInAppInstallPrompt() {
   installPrompt = null;
   installButton.setAttribute("hidden", "");
+  installHeader.setAttribute("hidden","");
 }
 installButton.addEventListener("click", async () => {
   if (!installPrompt) {
