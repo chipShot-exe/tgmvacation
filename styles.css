@@ -67,6 +67,7 @@ html {
 }
  .shop-img {
      height: 10vh;
+     width: auto;
      float: left;
      margin: 1rem;
      border-radius: 0.5rem;
