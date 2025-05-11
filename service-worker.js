@@ -4,8 +4,8 @@ const urlsToPreCache = [
   '/index.html',
   '/styles.css',
   '/scripts.js',
-  '/faviconNew.ico',
-  '/images/fallback.png' // Optional fallback image
+  '/faviconNew.ico', 
+   '/manifest.json'
 ];
 
 //  INSTALL: Precache critical files
