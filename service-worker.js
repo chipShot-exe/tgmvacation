@@ -67,9 +67,6 @@ function fromCache(request) {
     if (response) return response;
 
     // Fallback content types
-    if (request.destination === 'image') {
-      return caches.match('/images/fallback.png');
-    }
 
     return new Response('Offline and not cached.', {
       status: 404,
