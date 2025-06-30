@@ -38,10 +38,6 @@ const updatesTab = document.getElementById('pills-updates');
 updatesTab.addEventListener('click', function() {
     changeTitle("Updates");
 });
-const picsTab = document.getElementById('pills-pics-tab');
-picsTab.addEventListener('click', function() {
-    changeTitle("Pictures");
-});
 
 const qrTab = document.getElementById('pills-qrcode');
 qrTab.addEventListener('click', function() {
