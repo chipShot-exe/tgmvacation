@@ -1,7 +1,7 @@
 {
   "name": "Disneyland Notepad",
   "short_name": "Disneyland NP",
-  "start_url": "/index.html",
+  "start_url": "/tgmvacation/index.html",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#ffffff",
