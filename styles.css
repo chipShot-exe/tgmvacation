@@ -164,7 +164,7 @@ iframe.no-dark {
      width:100%;
 }
 #qrCanvas{
-     width: 100;
+     width: 50vw;
      margin: auto;
      padding: 10px;
 }

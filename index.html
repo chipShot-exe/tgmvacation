@@ -208,7 +208,7 @@
        alert("Please enter a URL or text to generate QR code.");
        return;
      }
-      const containerWidth = document.getElementById("qrCanvas").offsetWidth;
+      const containerWidth = canvas.offsetWidth;
       const qrSize = Math.min(containerWidth * 0.9, 300);
       const qrcode = new QRCode(canvas, {
        text: qrdata,
@@ -237,8 +237,6 @@
            </div>
          </div>
        `);
- 
-       // Add image copying logic
        document.getElementById("copyBtn").addEventListener("click", () => {
   const img = document.querySelector("#qrCanvas img");
 
