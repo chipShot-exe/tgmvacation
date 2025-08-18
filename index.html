@@ -93,12 +93,18 @@
         <stop offset="80%" stop-color="#fff" stop-opacity="0"/>
       </linearGradient>
       <mask id="text-mask">
-        <text id="svgHeadText" x="50%" y="70" text-anchor="middle" font-size="56" font-family="Commissioner, serif" font-weight="600">Disneyland Notepad</text>
+        <!-- Ensure text is SVG text, not HTML text -->
+        <rect x="0" y="0" width="700" height="100" fill="white"/>
+        <text x="50%" y="70" text-anchor="middle" font-size="56" font-family="Commissioner, serif" font-weight="600" fill="black">
+          Disneyland Notepad
+        </text>
       </mask>
     </defs>
-    <!-- Remove mask for debugging, set fill to red -->
     <rect id="sweepRect" x="-200" y="0" width="300" height="100" fill="url(#sweep)" mask="url(#text-mask)" />
-    <text x="50%" y="70" text-anchor="middle" font-size="56" font-family="Commissioner, serif" font-weight="600" fill="#222">Disneyland Notepad</text>
+    <!-- Optionally, remove the visible text below if you want only the sweep to show -->
+    <text x="50%" y="70" text-anchor="middle" font-size="56" font-family="Commissioner, serif" font-weight="600" fill="#222">
+      Disneyland Notepad
+    </text>
   </svg>
 </div>
 <script>
