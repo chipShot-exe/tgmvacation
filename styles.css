@@ -180,3 +180,39 @@ iframe.no-dark {
 #qr-options-group{
      padding: 15px
 }
+#head {
+  position: relative;
+}
+
+/* Fix the pseudo-element */
+#head:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -180px; /* Start off-screen */
+  width: 150px;
+  height: 50px;
+  z-index: 1;
+  background: linear-gradient(
+    -65deg,
+    rgba(255, 255, 255, 0) 10%,
+    rgba(255, 255, 255, .45) 40%,
+    rgba(255, 255, 255, .55) 50%,
+    rgba(255, 255, 255, 0) 80%
+  );
+  transform: skew(-45deg);
+  animation: sweep 3s infinite ease-in;
+}
+@keyframes sweep {
+  0% {
+    right:180px;
+  }
+
+  33.3% {
+    right:-180px;
+  }
+
+  100% {
+    right:-180px;
+  }
+}
