@@ -5,7 +5,7 @@ const urlsToPreCache = [
   '/styles.css',
   '/scripts.js',
   '/faviconNew.ico', 
-   '/manifest.json'
+  '/manifest.json'
 ];
 
 //  INSTALL: Precache critical files
@@ -34,44 +34,32 @@ self.addEventListener('activate', event => {
   self.clients.claim();
 });
 
-//  FETCH: Online-first, fallback to cache
+//  FETCH: Network-first, fallback to cache
 self.addEventListener('fetch', event => {
   event.respondWith(
-    isOnline()
-      ? fetchAndCache(event.request)
-      : fromCache(event.request)
+    fetch(event.request)
+      .then(response => {
+        // Only cache successful same-origin responses
+        if (response && response.status === 200 && response.type === 'basic') {
+          const responseClone = response.clone();
+          caches.open(CACHE_NAME).then(cache => {
+            cache.put(event.request, responseClone);
+          });
+        }
+        return response;
+      })
+      .catch(() => fromCache(event.request))
   );
 });
-
-function isOnline() {
-  return self.navigator.onLine;
-}
-
-function fetchAndCache(request) {
-  return fetch(request)
-    .then(response => {
-      // Only cache successful responses
-      if (response && response.status === 200 && response.type !== 'opaque') {
-        const responseClone = response.clone();
-        caches.open(CACHE_NAME).then(cache => {
-          cache.put(request, responseClone);
-        });
-      }
-      return response;
-    })
-    .catch(() => fromCache(request));
-}
 
 function fromCache(request) {
   return caches.match(request).then(response => {
     if (response) return response;
 
     // Fallback content types
-
     return new Response('Offline and not cached.', {
       status: 404,
       headers: { 'Content-Type': 'text/plain' }
     });
   });
 }
-// JavaScript Document
