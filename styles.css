@@ -21,6 +21,12 @@ html {
      font-weight: 600;
      margin-top: 0;
 }
+#header{
+  color: #a1e4ff;
+  text-shadow:
+    0 0 12px #3EC8FF,
+    0 0 32px #fff2;
+}
  .nav_container {
     backdrop-filter: blur(13px) saturate(144%);
     -webkit-backdrop-filter: blur(13px) saturate(144%);
@@ -180,41 +186,4 @@ iframe.no-dark {
 #qr-options-group{
      padding: 15px
 }
-#head {
-  position: relative;
-  overflow: hidden;
-  color: #dfdeed;
-  display: inline-block; /* Only cover the text */
-  background: none;      /* Remove grey box */
-}
 
-#head:after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -400px; /* Start further offscreen */
-  width: 200px; /* Wider for more visible sweep */
-  height: 100%;  /* Cover full heading height */
-  z-index: 1; /* Ensure sweep is above background but below text */
-  pointer-events: none; /* Don't block mouse */
-  background: linear-gradient(
-    -65deg,
-    rgba(255,255,255,0) 10%,
-    rgba(255,255,255,0.6) 40%,
-    rgba(255,255,255,0.8) 50%,
-    rgba(255,255,255,0) 80%
-  );
-  transform: skew(-45deg);
-  animation: sweep 3s infinite ease-in;
-}
-@keyframes sweep {
-  0% {
-    left: -400px; /* Start offscreen */
-  }
-  33.3% {
-    left: 400px;  /* Move fully offscreen to the right */
-  }
-  100% {
-    left: 400px;
-  }
-}
