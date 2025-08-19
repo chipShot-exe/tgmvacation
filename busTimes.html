@@ -35,14 +35,6 @@
                     { from: 0, to: 1, next: "12:10", last: "12:50", duration: 12 },
                     { from: 1, to: 0, next: "12:20", last: "13:00", duration: 14 }
                 ]
-            },
-            {
-                name: "Line C",
-                color: "warning",
-                arrivals: [
-                    { from: 0, to: 1, next: "12:20", last: "13:00", duration: 20 },
-                    { from: 1, to: 0, next: "12:30", last: "13:10", duration: 18 }
-                ]
             }
         ];
 
@@ -84,7 +76,7 @@
                                 ${locations[arr.from]} <i class="bi bi-arrow-right"></i> ${locations[arr.to]}
                                 ${isFastest ? `<span class="badge bg-danger ms-2">Fastest</span>` : ''}
                             </h5>
-                            <ul class="list-group">
+                            <ul class="list-group-dark">
                                 <li class="list-group-item">
                                     <strong>Next Arrival:</strong> ${arr.next}
                                 </li>
