@@ -47,4 +47,15 @@ document.addEventListener("DOMContentLoaded", function(){
                   </li>
                </ul>
             </div>
+                        <div class="col mb-3">
+               <h5>Blogs and Unofficial</h5>
+               <ul class="nav flex-column">
+                  <li class="nav-item mb-2 linkFit">
+                     <a href="Mouseplanet.com" class="link-underline-dark link-offset-3 nav-link p-0">Mouseplanet.com</a>
+                  </li>
+                  <li class="nav-item mb-2 linkFit">
+                     <a href="Disneytouristblog.com" class="link-underline-dark link-offset-3 nav-link p-0 text-body-secondary">Disney tourist blog</a>
+                  </li>
+               </ul>
+            </div>
          </footer>`;})
