@@ -1,4 +1,76 @@
 document.addEventListener("DOMContentLoaded", function(){
+   // Hamburger menu HTML
+   const hamburgerMenu = `
+   <style>
+      #hamburger-menu { position:fixed;top:18px;right:18px;z-index:1050; }
+      #hamburger-sidebar {
+         visibility: hidden;
+         opacity: 0;
+         transition: opacity 0.2s, visibility 0.2s;
+         position:fixed;top:0;right:0;height:100vh;width:220px;
+         background:rgba(17,25,40,0.95);
+         backdrop-filter:blur(8px);
+         box-shadow:2px 0 16px #0008;
+         z-index:1060;
+         padding-top:60px;
+      }
+      #hamburger-sidebar.open {
+         visibility: visible;
+         opacity: 1;
+      }
+      #hamburger-overlay {
+         display:none;
+         position:fixed;top:0;left:0;width:100vw;height:100vh;
+         background:rgba(0,0,0,0.2);
+         z-index:1059;
+      }
+      #hamburger-overlay.open {
+         display:block;
+      }
+   </style>
+   <div id="hamburger-menu">
+      <button id="hamburger-btn" class="btn btn-outline-light" style="font-size:1.2rem;padding:0.25rem 0.5rem;">
+         <i class="bi bi-list"></i>
+      </button>
+      <div id="hamburger-sidebar">
+         <button id="hamburger-close" class="btn btn-outline-light" style="position:absolute;top:18px;right:18px;">
+            <i class="bi bi-x-lg"></i>
+         </button>
+         <nav class="nav flex-column mt-4 ms-3">
+            <a class="nav-link text-light" href="index.html"><i class="bi bi-house"></i> Home</a>
+            <a class="nav-link text-light" href="#pills-home" data-bs-toggle="pill"><i class="bi bi-exclamation-circle"></i> Tips</a>
+            <a class="nav-link text-light" href="#pills-profile" data-bs-toggle="pill"><i class="bi bi-journal-bookmark"></i> Notes</a>
+            <a class="nav-link text-light" href="#pills-shop" data-bs-toggle="pill"><i class="bi bi-bag"></i> Shopping</a>
+            <a class="nav-link text-light" href="#pills-updates" data-bs-toggle="pill"><i class="bi bi-info-square"></i> Updates</a>
+            <a class="nav-link text-light" href="#pills-qrcode" data-bs-toggle="pill"><i class="bi bi-qr-code"></i> QR Code</a>
+         </nav>
+      </div>
+      <div id="hamburger-overlay"></div>
+   </div>
+   `;
+   document.body.insertAdjacentHTML('afterbegin', hamburgerMenu);
+
+   // Hamburger menu JS
+   const btn = document.getElementById('hamburger-btn');
+   const sidebar = document.getElementById('hamburger-sidebar');
+   const closeBtn = document.getElementById('hamburger-close');
+   const overlay = document.getElementById('hamburger-overlay');
+
+   function openSidebar() {
+      sidebar.classList.add('open');
+      overlay.classList.add('open');
+   }
+   function closeSidebar() {
+      sidebar.classList.remove('open');
+      overlay.classList.remove('open');
+   }
+   btn.addEventListener('click', openSidebar);
+   closeBtn.addEventListener('click', closeSidebar);
+   overlay.addEventListener('click', closeSidebar);
+   document.addEventListener('keydown', function(e){
+      if (e.key === "Escape") closeSidebar();
+   });
+
    document.getElementById("footer").innerHTML = `      <div class="linksWrapper">
          <h4 class="linksTitle">Helpful links</h4>
       </div>
@@ -58,4 +130,5 @@ document.addEventListener("DOMContentLoaded", function(){
                   </li>
                </ul>
             </div>
-         </footer>`;})
+         </footer>`;
+})
