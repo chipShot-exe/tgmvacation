@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="styles.css">
           <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body data-bs-theme="dark">
     <div class="container py-4">
         <h1 id="header">Shuttle times</h1>
         <h2>by Disneyland Notepad</h2>
@@ -76,7 +76,7 @@
                                 ${locations[arr.from]} <i class="bi bi-arrow-right"></i> ${locations[arr.to]}
                                 ${isFastest ? `<span class="badge bg-danger ms-2">Fastest</span>` : ''}
                             </h5>
-                            <ul class="list-group" data-bs-theme="dark">
+                            <ul class="list-group" >
                                 <li class="list-group-item">
                                     <strong>Next Arrival:</strong> ${arr.next}
                                 </li>
