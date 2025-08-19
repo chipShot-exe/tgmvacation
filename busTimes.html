@@ -66,30 +66,6 @@
                         <div class="card-body">
                             <div class="row">
                 `;
-                line.arrivals.forEach(arr => {
-                    // Check if this arrival is the fastest for this direction
-                    const fastest = getFastestLineObj(arr.from, arr.to);
-                    const isFastest = fastest.line === line.name && fastest.duration === arr.duration;
-                    html += `
-                        <div class="col-md-6 mb-3">
-                            <h5>
-                                ${locations[arr.from]} <i class="bi bi-arrow-right"></i> ${locations[arr.to]}
-                                ${isFastest ? `<span class="badge bg-danger ms-2">Fastest</span>` : ''}
-                            </h5>
-                            <ul class="list-group" >
-                                <li class="list-group-item">
-                                    <strong>Next Arrival:</strong> ${arr.next}
-                                </li>
-                                <li class="list-group-item">
-                                    <strong>Last Arrival:</strong> ${arr.last}
-                                </li>
-                                <li class="list-group-item">
-                                    <strong>Duration:</strong> ${arr.duration} min
-                                </li>
-                            </ul>
-                        </div>
-                    `;
-                });
                 html += `
                             </div>
                         </div>
@@ -102,6 +78,6 @@
         renderBusTimes();
     </script>
 <div id="footer"></div>
-<script src="footer.js"></script>
+<script src="pageCommon.js"></script>
 </body>
 </html>
