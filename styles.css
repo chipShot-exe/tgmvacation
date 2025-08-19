@@ -21,6 +21,9 @@ html {
      font-weight: 600;
      margin-top: 0;
 }
+h2{
+     text-align: center;
+}
 #header{
   color: #a1e4ff;
   text-shadow:
