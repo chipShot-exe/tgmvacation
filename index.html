@@ -113,6 +113,7 @@
                   <button class="nav-link" id="pills-qr-tab" data-bs-toggle="pill" data-bs-target="#pills-qrcode" type="button" role="tab" aria-controls="pills-qrcode" aria-selected="false" ><i class="bi bi-qr-code"></i>  QR code</button>
                </li>
             </ul>
+            </div>
             <div class="tab-content" id="pills-tabContent">
                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-tips-tab" tabindex="0">
                   <div class="accordion" id="accordionExample" data-bs-theme="dark">
@@ -197,7 +198,7 @@
 <div id="qrWrap">
   <div id="qrCanvas"></div>
 </div>
-
+</div>
 <script>
    function generateQR() {
      const canvas = document.getElementById("qrCanvas");
@@ -277,7 +278,6 @@
  
    document.getElementById("qrSubmit").addEventListener("click", generateQR);
  </script>
- 
          </div>
       </div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
