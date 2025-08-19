@@ -1,4 +1,5 @@
-document.getElementById("footer").innerHTML = `      <div class="linksWrapper">
+document.addEventListener("DOMContentLoaded", function(){
+   document.getElementById("footer").innerHTML = `      <div class="linksWrapper">
          <h4 class="linksTitle">Helpful links</h4>
       </div>
       <div class="b-example-divider"></div>
@@ -46,4 +47,4 @@ document.getElementById("footer").innerHTML = `      <div class="linksWrapper">
                   </li>
                </ul>
             </div>
-         </footer>`;
+         </footer>`;})
