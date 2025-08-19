@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", function(){
-   // Hamburger menu HTML
    const hamburgerMenu = `
    <style>
       #hamburger-menu { position:fixed;top:18px;right:18px;z-index:1050; }
