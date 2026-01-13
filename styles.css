@@ -29,6 +29,7 @@ h2{
   text-shadow:
     0 0 12px #3EC8FF,
     0 0 32px #fff2;
+  padding-bottom: 15px;
 }
  .nav_container {
     backdrop-filter: blur(13px) saturate(144%);
@@ -69,10 +70,6 @@ h2{
  #logo {
      display: block;
      margin: auto;
-}
- #logo-container {
-     padding: 20px;
-     padding-bottom: 5px;
 }
  .shop-img {
      float: left;
@@ -118,7 +115,7 @@ h2{
      vertical-align: top;
 }
  .card {
-     height: 350px; /* Explicit height for card */
+     height: 350px;
      display: flex;
      flex-direction: column;
      overflow: hidden;
@@ -189,4 +186,64 @@ iframe.no-dark {
 #qr-options-group{
      padding: 15px
 }
+#logo-container {
+    position: relative; 
+    width: 100%;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
 
+.sliding-background {
+    background-image: url("DisneylandCropped.jpg");
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    z-index: 1; 
+    
+    animation: slide-bg 60s linear infinite;
+    opacity: 0.6;
+}
+
+#logo-container > a {
+    position: relative;
+    z-index: 2;
+    display: block;
+}
+
+#logo {
+    display: block;
+    margin: 0 auto;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.8));
+}
+
+@keyframes slide-bg {
+    from { background-position: 0 0; }
+    to { background-position: -1860px 0; } /* Ensure 1500px matches the width set in background-size */
+}
+#installHeader {
+    position: relative;
+    z-index: 100;
+    width: 100%;
+}
+#logo-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    z-index: 1;
+    min-height: 122px; 
+}
+#LLtable {
+ padding: 15px;
+}
+.tablewrap {
+    margin: 4vw;
+    border-color: #3b3f42;
+    height: fit-content
+}
