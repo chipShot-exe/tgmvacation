@@ -28,10 +28,7 @@ document.addEventListener("DOMContentLoaded", function(){
       }
    </style>
    <div id="hamburger-menu">
-      <button id="hamburger-btn" class="btn btn-outline-light" style="font-size:1.2rem;padding:0.25rem 0.5rem;    backdrop-filter: blur(1px) saturate(180%);
-    -webkit-backdrop-filter: blur(1px) saturate(180%);
-    background-color: rgba(17, 25, 40, 0.41);
-    border: 1px solid rgba(255, 255, 255, 0.125);">
+      <button id="hamburger-btn" class="glassbutton btn btn-outline-light" style="font-size:1.2rem;padding:0.25rem 0.5rem;">
          <i class="bi bi-list"></i>
       </button>
       <div id="hamburger-sidebar">

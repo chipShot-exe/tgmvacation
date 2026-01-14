@@ -1,242 +1,244 @@
 <!doctype html>
 <html lang="en">
-   <head>
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-      <title>Disneyland Notepad | Tips</title>
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap" rel="stylesheet">
-      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-      <link rel="icon" type="image/x-icon" href="faviconNew.ico">
-      <link rel="manifest" href="manifest.json">
-      <meta name="theme-color" content="#3d03a8">
-      <link rel="stylesheet" href="styles.css">
-   </head>
-   <body>
-      <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
-      <div id="qrcode"></div>
-      <div class="toast-container position-fixed bottom-0 end-0 p-3">
-         <div id="liveToast" class="toast show bg-dark text-white" role="alert" aria-live="assertive" aria-atomic="true" data-bs-theme="dark">
-            <div class="toast-header">
-               <i class="bi bi-send-exclamation"></i>
-               <strong class="me-auto">&nbsp Disneyland Notepad</strong>
-               <small>just now</small>
-               <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Disneyland Notepad | Tips</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="icon" type="image/x-icon" href="faviconNew.ico">
+        <link rel="manifest" href="manifest.json">
+        <meta name="theme-color" content="#3d03a8">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="installHeader" hidden class="text-center p-2 bg-light">
+            <p>Want to use this offline?</p>
+            <button id="install" class="hambutton btn btn-success">Install App</button>
+        </div>
+        <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
+        <div id="qrcode"></div>
+        <div class="toast-container position-fixed bottom-0 end-0 p-3">
+            <div id="liveToast" class="toast show bg-dark text-white" role="alert" aria-live="assertive" aria-atomic="true" data-bs-theme="dark">
+                <div class="toast-header">
+                    <i class="bi bi-send-exclamation"></i>
+                    <strong class="me-auto">&nbsp Disneyland Notepad</strong>
+                    <small>just now</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Welcome! Here you'll find some helpful tools and research I've done. Bear in mind that it is a work inprogress, so at certain points things may not work as expected. Thanks for checking it out!
+                </div>
             </div>
-            <div class="toast-body">
-               Welcome! Here you'll find some helpful tools and research I've done. Bear in mind that it is a work inprogress, so at certain points things may not work as expected. Thanks for checking it out!
-	       </div>
-	    </div>
-         </div>
-      </div>
-      <a class="weatherwidget-io d-none d-md-block no-dark" href="https://forecast7.com/en/33d84n117d91/anaheim/?unit=us" data-label_1="ANAHEIM" data-font="Helvetica" data-icons="Climacons Animated" data-theme="original" data-basecolor="rgba(31, 86, 124, 0)" >ANAHEIM</a>
-      <script>
-         !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
-      </script>
-      <a class="weatherwidget-io d-block d-md-none no-dark" href="https://forecast7.com/en/33d84n117d91/anaheim/?unit=us" data-label_1="ANAHEIM" data-font="Helvetica" data-icons="Climacons Animated" data-mode="Current" data-theme="original" data-basecolor="rgba(31, 86, 124, 0)" >ANAHEIM</a>
-      <div id="weatherLinkWrapper">
-         <a id="weatherHeader" href="https://weather.com/weather/today/l/dda086304f6b62200af6ebb1a07d3f15a8dacdf39c5a3a50996bacbc2416eb29" class="translate-middle"><small>Click for more information.</small></a>
-      </div>
-      <div class="nav_container">
-         <div class="tab-content">
-            <!-- Tabs --> 
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-               <li class="nav-item" role="presentation">
-                  <button class="nav-link active" id="pills-tips-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-tips" aria-selected="true" ><i class="bi bi-exclamation-circle-fill"></i> Tips</button>
-               </li>
-               <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="pills-notes-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-notes" aria-selected="false" ><i class="bi bi-journal-bookmark-fill"></i> Notes</button>
-               </li>
-               <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="pills-shop-tab" data-bs-toggle="pill" data-bs-target="#pills-shop" type="button" role="tab" aria-controls="pills-shop" aria-selected="false" ><i class="bi bi-bag-fill"></i> Shopping</button>
-               </li>
-               <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="pills-recent-tab" data-bs-toggle="pill" data-bs-target="#pills-updates" type="button" role="tab" aria-controls="pills-updates" aria-selected="false" ><i class="bi bi-info-square"></i>  Updates</button>
-               </li>
-               <li class="nav-item" role="presentation">
-                  <button class="nav-link" id="pills-qr-tab" data-bs-toggle="pill" data-bs-target="#pills-qrcode" type="button" role="tab" aria-controls="pills-qrcode" aria-selected="false" ><i class="bi bi-qr-code"></i>  QR code</button>
-               </li>
-            </ul>
+        </div>
+        </div>
+        <a class="weatherwidget-io d-none d-md-block no-dark" href="https://forecast7.com/en/33d84n117d91/anaheim/?unit=us" data-label_1="ANAHEIM" data-font="Helvetica" data-icons="Climacons Animated" data-theme="original" data-basecolor="rgba(31, 86, 124, 0)" >ANAHEIM</a>
+        <script>
+            !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+        </script>
+        <a class="weatherwidget-io d-block d-md-none no-dark" href="https://forecast7.com/en/33d84n117d91/anaheim/?unit=us" data-label_1="ANAHEIM" data-font="Helvetica" data-icons="Climacons Animated" data-mode="Current" data-theme="original" data-basecolor="rgba(31, 86, 124, 0)" >ANAHEIM</a>
+        <div id="weatherLinkWrapper">
+            <a id="weatherHeader" href="https://weather.com/weather/today/l/dda086304f6b62200af6ebb1a07d3f15a8dacdf39c5a3a50996bacbc2416eb29" class="translate-middle"><small>Click for more information.</small></a>
+        </div>
+        <div class="nav_container">
+            <div class="tab-content">
+                <!-- Tabs --> 
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="pills-tips-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-tips" aria-selected="true" ><i class="bi bi-exclamation-circle-fill"></i> Tips</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-notes-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-notes" aria-selected="false" ><i class="bi bi-journal-bookmark-fill"></i> Notes</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-shop-tab" data-bs-toggle="pill" data-bs-target="#pills-shop" type="button" role="tab" aria-controls="pills-shop" aria-selected="false" ><i class="bi bi-bag-fill"></i> Shopping</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-recent-tab" data-bs-toggle="pill" data-bs-target="#pills-updates" type="button" role="tab" aria-controls="pills-updates" aria-selected="false" ><i class="bi bi-info-square"></i>  Updates</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="pills-qr-tab" data-bs-toggle="pill" data-bs-target="#pills-qrcode" type="button" role="tab" aria-controls="pills-qrcode" aria-selected="false" ><i class="bi bi-qr-code"></i>  QR code</button>
+                    </li>
+                </ul>
             </div>
             <div class="tab-content" id="pills-tabContent">
-               <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-tips-tab" tabindex="0">
-                  <div class="accordion" id="accordionExample" data-bs-theme="dark">
-                     <div class="accordion-item">
-                        <h2 class="accordion-header">
-                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne">
-                           Preparation
-                           </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                           <div class="accordion-body">
-                              <ul>
-                                 <li>Take pictures of your tickets if not using the app for admission</li>
-                                 <li>On google maps, tap your profile picture and tap offline maps to save to your device.</li>
-                              </ul>
-                           </div>
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-tips-tab" tabindex="0">
+                    <div class="accordion" id="accordionExample" data-bs-theme="dark">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-controls="collapseOne">
+                                Preparation
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Take pictures of your tickets if not using the app for admission</li>
+                                        <li>On google maps, tap your profile picture and tap offline maps to save to your device.</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                     <div class="accordion-item">
-                        <h2 class="accordion-header">
-                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                           In the parks
-                           </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                           <div class="accordion-body">
-                              <ul>
-                                 <li>Get in line for something while deciding what to do next. You might get to the front by the time you make a choice!</li>
-                                 <li>Do your specific shopping early in the day, because main street is open later for generic Disney souvenirs.</li>
-                                 <li>There's a barely used "secret" bathroom in the Enchanted tiki room waiting area. Look to the left of the entrance.</li>
-                              </ul>
-                           </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                In the parks
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Get in line for something while deciding what to do next. You might get to the front by the time you make a choice!</li>
+                                        <li>Do your specific shopping early in the day, because main street is open later for generic Disney souvenirs.</li>
+                                        <li>There's a barely used "secret" bathroom in the Enchanted tiki room waiting area. Look to the left of the entrance.</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                     <div class="accordion-item">
-                        <h2 class="accordion-header">
-                           <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                           Misc. Travel
-                           </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                           <div class="accordion-body">
-                              <ul>
-                                 <li>One</li>
-                                 <li>Two</li>
-                                 <li>Three</li>
-                              </ul>
-                           </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Misc. Travel
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>One</li>
+                                        <li>Two</li>
+                                        <li>Three</li>
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-notes-tab" tabindex="0"> 
-                  <label for="notes">Notes:</label>
-                  <textarea id="notes" placeholder="Write any notes or ideas you have here, and they'll save in local storage for this site." data-bs-theme=""></textarea>
-               </div>
-               <div class="tab-pane fade" id="pills-shop" role="tabpanel" aria-labelledby="pills-shop-tab" tabindex="0">
-                  <label for="shoppingThings">Here's some cool stuff I found that are helpful at Disney:</label>
-                  <ul class="list-group" id="shoppingThings" data-bs-theme="dark">
-                     <li class="list-group-item">
-                        <img class="shop-img w-25"src="fuelRod.jpg">
-                        <p><strong>Fuelrod</strong><br>You think it's a normal powerbank until you realize you can swap it for a charged one for free anywhere around Disneyland (or another Disney park!).<br><a class="btn btn-primary" target="_blank"href="https://fuel-rod.com" role="button">Vist FuelRod!</a></p>
-                     </li>
-                     <li class="list-group-item"><img class="shop-img w-25"src="Unofficial_guide.jpg"><strong>Unofficial guide to Disneyland 2026</strong><br>A comprehensive and objective guide giving tips and information that’s hard to find anywhere else.<br><a class="btn btn-primary" target="_blank"href="https://www.amazon.com/Unofficial-Guide-Disneyland-2025-Guides/dp/162809155X/ref=asc_df_162809155X?mcid=11c320580e6d3e5fb9756b19bffed4bd&hvocijid=8356027642027707163-162809155X-&hvexpln=73&tag=hyprod-20&linkCode=df0&hvadid=721245378154&hvpos=&hvnetw=g&hvrand=8356027642027707163&hvpone=&hvptwo=&hvqmt=&hvdev=m&hvdvcmdl=&hvlocint=&hvlocphy=9033322&hvtargid=pla-2281435178298&psc=1" role="button">Check out Unofficial Guides!</a></p>
-                  </li>
-                  </ul>
-               </div>
-               <div class="tab-pane fade show" id="pills-updates" role="tabpanel" aria-labelledby="pills-tips-tab" tabindex="0">
-               <ul>
-                  <li> Added chart of rides offering Lightning Lane and Single Rider lines </li>
-                  <li> New scrolling banner</li>
-                  <!--<span class="secondary"><em>No new updates.</em></span>-->
-               </ul>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-notes-tab" tabindex="0"> 
+                    <label for="notes">Notes:</label>
+                    <textarea id="notes" placeholder="Write any notes or ideas you have here, and they'll save in local storage for this site." data-bs-theme=""></textarea>
+                </div>
+                <div class="tab-pane fade" id="pills-shop" role="tabpanel" aria-labelledby="pills-shop-tab" tabindex="0">
+                    <label for="shoppingThings">Here's some cool stuff I found that are helpful at Disney:</label>
+                    <ul class="list-group" id="shoppingThings" data-bs-theme="dark">
+                        <li class="list-group-item">
+                            <img class="shop-img w-25"src="fuelRod.jpg">
+                            <p><strong>Fuelrod</strong><br>You think it's a normal powerbank until you realize you can swap it for a charged one for free anywhere around Disneyland (or another Disney park!).<br><a class="btn btn-primary" target="_blank"href="https://fuel-rod.com" role="button">Vist FuelRod!</a></p>
+                        </li>
+                        <li class="list-group-item"><img class="shop-img w-25"src="Unofficial_guide.jpg"><strong>Unofficial guide to Disneyland 2026</strong><br>A comprehensive and objective guide giving tips and information that’s hard to find anywhere else.<br><a class="btn btn-primary" target="_blank"href="https://www.amazon.com/Unofficial-Guide-Disneyland-2025-Guides/dp/162809155X/ref=asc_df_162809155X?mcid=11c320580e6d3e5fb9756b19bffed4bd&hvocijid=8356027642027707163-162809155X-&hvexpln=73&tag=hyprod-20&linkCode=df0&hvadid=721245378154&hvpos=&hvnetw=g&hvrand=8356027642027707163&hvpone=&hvptwo=&hvqmt=&hvdev=m&hvdvcmdl=&hvlocint=&hvlocphy=9033322&hvtargid=pla-2281435178298&psc=1" role="button">Check out Unofficial Guides!</a></p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-pane fade show" id="pills-updates" role="tabpanel" aria-labelledby="pills-tips-tab" tabindex="0">
+                    <ul>
+                        <li> Added chart of rides offering Lightning Lane and Single Rider lines </li>
+                        <li> New scrolling banner</li>
+                        <!--<span class="secondary"><em>No new updates.</em></span>-->
+                    </ul>
+                </div>
+                <div class="tab-pane fade show" id="pills-qrcode" role="tabpanel" aria-labelledby="pills-qr-tab" tabindex="0">
+                    <h2>Url or text:</h2>
+                    <div class="input-group mb-3" id="qrForm">
+                        <input type="text" class="form-control" id="qrInput" placeholder="https://example.com">
+                        <button class="btn btn-primary" type="button" id="qrSubmit">Generate</button>
+                    </div>
+                    <div id="qrWrap">
+                        <div id="qrCanvas"></div>
+                    </div>
+                    <script>
+                        function generateQR() {
+                          const canvas = document.getElementById("qrCanvas");
+                          const qrdata = document.getElementById("qrInput").value.trim();
+                          canvas.innerHTML = '';
+                        
+                          if (!qrdata) {
+                            alert("Please enter a URL or text to generate QR code.");
+                            return;
+                          }
+                           const containerWidth = canvas.offsetWidth;
+                           const qrSize = Math.min(containerWidth * 0.9, 300);
+                           const qrcode = new QRCode(canvas, {
+                            text: qrdata,
+                            width: qrSize,
+                            height: qrSize,
+                            colorDark: "#000000",
+                            colorLight: "#ffffff",
+                            correctLevel: QRCode.CorrectLevel.H
+                          });
+                        
+                          setTimeout(() => {
+                            const img = canvas.querySelector("img");
+                            const src = img?.src;
+                        
+                            if (!src) return;
+                        
+                            canvas.insertAdjacentHTML('beforeend', `
+                              <div id="qr-options-wrap" class="mt-2">
+                                <div class="btn-group" role="group" id="qr-options-group" aria-label="QR code options">
+                                  <button type="button" class="btn btn-outline-info" id="copyBtn" aria-label="Copy">
+                                    <i class="bi bi-copy"></i> Copy
+                                  </button>
+                                  <a href="${src}" id="qrdl" download="qr-code.png" class="btn btn-outline-info" aria-label="Download">
+                                    <i class="bi bi-download"></i> Download
+                                  </a>
+                                </div>
+                              </div>
+                            `);
+                            document.getElementById("copyBtn").addEventListener("click", () => {
+                        const img = document.querySelector("#qrCanvas img");
+                        
+                        if (!img) {
+                         alert("QR image not found!");
+                         return;
+                        }
+                        
+                        const tempCanvas = document.createElement("canvas");
+                        const ctx = tempCanvas.getContext("2d");
+                        tempCanvas.width = img.naturalWidth;
+                        tempCanvas.height = img.naturalHeight;
+                        
+                        const image = new Image();
+                        image.crossOrigin = "anonymous"; 
+                        image.onload = () => {
+                         ctx.drawImage(image, 0, 0);
+                        
+                        
+                         tempCanvas.toBlob((blob) => {
+                           if (!blob) {
+                             alert("Failed to convert QR code to image.");
+                             return;
+                           }
+                        
+                           const item = new ClipboardItem({ [blob.type]: blob });
+                           navigator.clipboard.write([item])
+                             .then(() => alert("QR code image copied to clipboard!"))
+                             .catch((err) => alert("Copy failed: " + err));
+                         }, "image/png");
+                        };
+                        
+                        image.src = img.src;
+                        });
+                          }, 100);
+                        }
+                        
+                        document.getElementById("qrSubmit").addEventListener("click", generateQR);
+                    </script>
+                </div>
             </div>
-            <div class="tab-pane fade show" id="pills-qrcode" role="tabpanel" aria-labelledby="pills-qr-tab" tabindex="0">
-               <h2>Url or text:</h2>
-<div class="input-group mb-3" id="qrForm">
-  <input type="text" class="form-control" id="qrInput" placeholder="https://example.com">
-  <button class="btn btn-primary" type="button" id="qrSubmit">Generate</button>
-</div>
-
-<div id="qrWrap">
-  <div id="qrCanvas"></div>
-</div>
-<script>
-   function generateQR() {
-     const canvas = document.getElementById("qrCanvas");
-     const qrdata = document.getElementById("qrInput").value.trim();
-     canvas.innerHTML = '';
- 
-     if (!qrdata) {
-       alert("Please enter a URL or text to generate QR code.");
-       return;
-     }
-      const containerWidth = canvas.offsetWidth;
-      const qrSize = Math.min(containerWidth * 0.9, 300);
-      const qrcode = new QRCode(canvas, {
-       text: qrdata,
-       width: qrSize,
-       height: qrSize,
-       colorDark: "#000000",
-       colorLight: "#ffffff",
-       correctLevel: QRCode.CorrectLevel.H
-     });
- 
-     setTimeout(() => {
-       const img = canvas.querySelector("img");
-       const src = img?.src;
- 
-       if (!src) return;
- 
-       canvas.insertAdjacentHTML('beforeend', `
-         <div id="qr-options-wrap" class="mt-2">
-           <div class="btn-group" role="group" id="qr-options-group" aria-label="QR code options">
-             <button type="button" class="btn btn-outline-info" id="copyBtn" aria-label="Copy">
-               <i class="bi bi-copy"></i> Copy
-             </button>
-             <a href="${src}" id="qrdl" download="qr-code.png" class="btn btn-outline-info" aria-label="Download">
-               <i class="bi bi-download"></i> Download
-             </a>
-           </div>
-         </div>
-       `);
-       document.getElementById("copyBtn").addEventListener("click", () => {
-  const img = document.querySelector("#qrCanvas img");
-
-  if (!img) {
-    alert("QR image not found!");
-    return;
-  }
-
-  const tempCanvas = document.createElement("canvas");
-  const ctx = tempCanvas.getContext("2d");
-  tempCanvas.width = img.naturalWidth;
-  tempCanvas.height = img.naturalHeight;
-
-  const image = new Image();
-  image.crossOrigin = "anonymous"; 
-  image.onload = () => {
-    ctx.drawImage(image, 0, 0);
-
-
-    tempCanvas.toBlob((blob) => {
-      if (!blob) {
-        alert("Failed to convert QR code to image.");
-        return;
-      }
-
-      const item = new ClipboardItem({ [blob.type]: blob });
-      navigator.clipboard.write([item])
-        .then(() => alert("QR code image copied to clipboard!"))
-        .catch((err) => alert("Copy failed: " + err));
-    }, "image/png");
-  };
-
-  image.src = img.src;
-});
-     }, 100);
-   }
- 
-   document.getElementById("qrSubmit").addEventListener("click", generateQR);
- </script>
-            </div>
-         </div>
-      </div>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
-      <script>
-         document.addEventListener("DOMContentLoaded", function () {
-         const modal = new bootstrap.Modal(document.getElementById('welcomeModal'));
-         modal.show();
-         });
-      </script>
-      <div id="footer"></div>
-      <script src="scripts.js"></script>
-      <script src="pageCommon.js"></script>
-   </body>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bs5-lightbox@1.8.3/dist/index.bundle.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+            const modal = new bootstrap.Modal(document.getElementById('welcomeModal'));
+            modal.show();
+            });
+        </script>
+        <div id="footer"></div>
+        <script src="scripts.js"></script>
+        <script src="pageCommon.js"></script>
+    </body>
 </html>
-

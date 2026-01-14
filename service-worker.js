@@ -1,4 +1,4 @@
-const CACHE_NAME = 'pwa-cache-v2'; // Incremented version
+const CACHE_NAME = 'pwa-cache-v2';
 const PRECACHE_ASSETS = [
   '/',
   '/index.html',
@@ -13,13 +13,11 @@ const PRECACHE_ASSETS = [
   '/Unofficial_guide.jpg'
 ];
 
-// INSTALL: Using a more resilient install logic
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => {
         console.log('Opened cache');
-        // We use map to catch individual errors so one 404 doesn't kill the SW
         return Promise.all(
           PRECACHE_ASSETS.map(url => {
             return cache.add(url).catch(err => console.error(`Failed to cache ${url}:`, err));
@@ -30,7 +28,6 @@ self.addEventListener('install', event => {
   );
 });
 
-// ACTIVATE: Standard cleanup
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(cacheNames => {
@@ -45,9 +42,7 @@ self.addEventListener('activate', event => {
   );
 });
 
-// FETCH: Network-first with a timeout or fallback
 self.addEventListener('fetch', event => {
-  // Skip cross-origin requests and non-GET requests
   if (event.request.method !== 'GET' || !event.request.url.startsWith(self.location.origin)) {
     return;
   }
@@ -55,7 +50,6 @@ self.addEventListener('fetch', event => {
   event.respondWith(
     fetch(event.request)
       .then(networkResponse => {
-        // Update the cache with the fresh version
         if (networkResponse.status === 200) {
           const responseClone = networkResponse.clone();
           caches.open(CACHE_NAME).then(cache => {
@@ -65,12 +59,10 @@ self.addEventListener('fetch', event => {
         return networkResponse;
       })
       .catch(() => {
-        // Fallback to cache if network fails
         return caches.match(event.request).then(cachedResponse => {
           if (cachedResponse) {
             return cachedResponse;
           }
-          // Optional: Return a specific offline page for HTML requests
           if (event.request.headers.get('accept').includes('text/html')) {
             return caches.match('/index.html');
           }
