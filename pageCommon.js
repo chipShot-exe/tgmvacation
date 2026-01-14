@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function(){
             <i class="bi bi-x-lg"></i>
          </button>
          <nav class="nav flex-column mt-4 ms-3">
-            <a class="nav-link text-light" href="index.html"><i class="bi bi-house"></i> Home</a>
+            <a class="nav-link text-light" href="/"><i class="bi bi-house"></i> Home</a>
             <a class="nav-link text-light" href="LLSR.html"><i class="bi bi-table"></i> Lightning Lanes chart</a>
          </nav>
       </div>
@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function(){
       </div>
     </header>
   </div>
-         <a href="index.html" class="noNewTab link-light link-underline link-underline-opacity-0">
+         <a href="/" class="noNewTab link-light link-underline link-underline-opacity-0">
             <svg id="logo" class="align-top" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="192px" height="122px" viewBox="73.98263,140,1132.03008,400">
                <g fill="none" fill-rule="none" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
                   <g>

@@ -206,7 +206,7 @@ iframe.no-dark {
     
     z-index: 1; 
     
-    animation: slide-bg 60s linear infinite;
+    animation: slide-bg 150s linear infinite;
     opacity: 0.6;
 }
 
@@ -243,7 +243,13 @@ iframe.no-dark {
  padding: 15px;
 }
 .tablewrap {
-    margin: 4vw;
+    margin: auto;
     border-color: #3b3f42;
-    height: fit-content
+    height: fit-content;
+    width: fit-content;
+}
+
+tr:nth-child(3) {
+    max-width: fit-content;
+
 }
