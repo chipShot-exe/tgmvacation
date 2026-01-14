@@ -1,65 +1,81 @@
-const CACHE_NAME = 'pwa-cache-v1';
-const urlsToPreCache = [
+const CACHE_NAME = 'pwa-cache-v2'; // Incremented version
+const PRECACHE_ASSETS = [
   '/',
   '/index.html',
   '/styles.css',
   '/scripts.js',
   '/faviconNew.ico', 
-  '/manifest.json'
+  '/manifest.json',
+  '/LLSR.html',
+  '/pagecommon.js',
+  '/DisneylandCropped.jpg',
+  '/fuelrod.jpg',
+  '/Unofficial_guide.jpg'
 ];
 
-//  INSTALL: Precache critical files
+// INSTALL: Using a more resilient install logic
 self.addEventListener('install', event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(urlsToPreCache);
-    })
+    caches.open(CACHE_NAME)
+      .then(cache => {
+        console.log('Opened cache');
+        // We use map to catch individual errors so one 404 doesn't kill the SW
+        return Promise.all(
+          PRECACHE_ASSETS.map(url => {
+            return cache.add(url).catch(err => console.error(`Failed to cache ${url}:`, err));
+          })
+        );
+      })
+      .then(() => self.skipWaiting())
   );
-  self.skipWaiting(); // Activate new SW immediately
 });
 
-// ACTIVATE: Cleanup old caches
+// ACTIVATE: Standard cleanup
 self.addEventListener('activate', event => {
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
-        keys.map(key => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
+    caches.keys().then(cacheNames => {
+      return Promise.all(
+        cacheNames.map(cache => {
+          if (cache !== CACHE_NAME) {
+            return caches.delete(cache);
           }
         })
-      )
-    )
+      );
+    }).then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
-//  FETCH: Network-first, fallback to cache
+// FETCH: Network-first with a timeout or fallback
 self.addEventListener('fetch', event => {
+  // Skip cross-origin requests and non-GET requests
+  if (event.request.method !== 'GET' || !event.request.url.startsWith(self.location.origin)) {
+    return;
+  }
+
   event.respondWith(
     fetch(event.request)
-      .then(response => {
-        // Only cache successful same-origin responses
-        if (response && response.status === 200 && response.type === 'basic') {
-          const responseClone = response.clone();
+      .then(networkResponse => {
+        // Update the cache with the fresh version
+        if (networkResponse.status === 200) {
+          const responseClone = networkResponse.clone();
           caches.open(CACHE_NAME).then(cache => {
             cache.put(event.request, responseClone);
           });
         }
-        return response;
+        return networkResponse;
       })
-      .catch(() => fromCache(event.request))
+      .catch(() => {
+        // Fallback to cache if network fails
+        return caches.match(event.request).then(cachedResponse => {
+          if (cachedResponse) {
+            return cachedResponse;
+          }
+          // Optional: Return a specific offline page for HTML requests
+          if (event.request.headers.get('accept').includes('text/html')) {
+            return caches.match('/index.html');
+          }
+          return new Response('Offline content unavailable', { status: 503 });
+        });
+      })
   );
 });
-
-function fromCache(request) {
-  return caches.match(request).then(response => {
-    if (response) return response;
-
-    // Fallback content types
-    return new Response('Offline and not cached.', {
-      status: 404,
-      headers: { 'Content-Type': 'text/plain' }
-    });
-  });
-}
