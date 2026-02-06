@@ -1,187 +1,194 @@
-document.addEventListener("DOMContentLoaded", function(){
-   const hamburgerMenu = `
-   <style>
-      #hamburger-menu { position:fixed;top:18px;right:18px;z-index:1050; }
-      #hamburger-sidebar {
-         visibility: hidden;
-         opacity: 0;
-         transition: opacity 0.2s, visibility 0.2s;
-         position:fixed;top:0;right:0;height:100vh;width:220px;
-         background:rgba(17,25,40,0.95);
-         backdrop-filter:blur(8px);
-         box-shadow:2px 0 16px #0008;
-         z-index:1060;
-         padding-top:60px;
-      }
-      #hamburger-sidebar.open {
-         visibility: visible;
-         opacity: 1;
-      }
-      #hamburger-overlay {
-         display:none;
-         position:fixed;top:0;left:0;width:100vw;height:100vh;
-         background:rgba(0,0,0,0.2);
-         z-index:1059;
-      }
-      #hamburger-overlay.open {
-         display:block;
-      }
-   </style>
-   <div id="hamburger-menu">
-      <button id="hamburger-btn" class="glassbutton btn btn-outline-light" style="font-size:1.2rem;padding:0.25rem 0.5rem;">
-         <i class="bi bi-list"></i>
-      </button>
-      <div id="hamburger-sidebar">
-         <button id="hamburger-close" class="btn btn-outline-light" style="position:absolute;top:18px;right:18px;">
-            <i class="bi bi-x-lg"></i>
-         </button>
-         <nav class="nav flex-column mt-4 ms-3">
-            <a class="nav-link text-light" href="/"><i class="bi bi-house"></i> Home</a>
-            <a class="nav-link text-light" href="LLSR.html"><i class="bi bi-table"></i> Lightning Lanes chart</a>
-         </nav>
-      </div>
-      <div id="hamburger-overlay"></div>
-   </div>
-   `;
-   document.body.insertAdjacentHTML('afterbegin', hamburgerMenu);
-   document.body.insertAdjacentHTML('afterbegin', `      <div id="logo-container">
-      <div class="sliding-background"></div>
-	      <div class="container" id="installHeader" hidden>
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      <div class="col-md-3 text-end">
-        <button type="button" class="btn btn-outline-primary me-2" id="install">Install app</button>
-      </div>
-    </header>
-  </div>
-         <a href="/" class="noNewTab link-light link-underline link-underline-opacity-0">
-            <svg id="logo" class="align-top" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="192px" height="122px" viewBox="73.98263,140,1132.03008,400">
-               <g fill="none" fill-rule="none" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-                  <g>
-                     <g id="stage">
-                        <g id="layer1 1">
-                           <g clip-path="url(#clip-1)" id="Group 1">
-                              <path d="M369.98626,455.78879c3.10523,-15.93626 5.8305,-30.72739 9.04186,-45.4137c0.40486,-1.84218 3.14061,-3.69745 5.20552,-4.50586c1.96403,-0.76648 4.46132,-0.17557 6.72407,-0.17557c174.75647,-0.00131 349.51294,0.02882 524.26809,-0.0642c12.91358,-0.00786 26.2045,-1.91031 33.05959,14.56315c3.92281,-4.39842 6.39128,-7.83776 9.53582,-10.4687c2.27455,-1.89983 5.39026,-3.69745 8.2269,-3.86254c13.31188,-0.77303 13.3525,-0.57519 17.79023,11.91911c4.41939,12.45369 8.7772,24.92834 13.37608,38.00831c-209.53114,0 -417.86605,0 -627.22817,0z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M230.59538,511.33839c11.0203,-15.22612 20.99897,-29.38441 31.51877,-43.13129c1.50807,-1.96927 5.62742,-2.71086 8.54136,-2.71872c43.75234,-0.12185 87.50467,-0.01441 131.25701,0.02096c133.01795,0.11137 266.0359,0.20308 399.05384,0.32363c64.11978,0.06027 128.23825,0.24239 192.35672,0.12185c5.59728,-0.01048 9.30522,1.69019 12.88475,5.86588c10.93776,12.75504 22.25286,25.18383 34.58207,39.04077c-3.6778,0.26073 -5.96545,0.56864 -8.24918,0.56864c-106.86717,0.02358 -213.73696,0.05372 -320.60414,-0.13495c-3.66601,-0.00524 -7.93865,-1.43863 -10.89845,-3.60967c-37.74626,-27.68505 -81.26407,-33.18668 -129.27595,4.11411c-2.97683,1.7557 -156.27706,-0.08647 -159.4347,-0.08123c-58.83957,0.12185 -117.68046,0.0891 -176.52134,0.07337c-1.19361,-0.00393 -2.38723,-0.20177 -5.21076,-0.45334z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M381.30136,398.10352c0,-15.00076 0,-29.42241 0,-44.30656c33.57189,0 68.4147,0 104.46815,0c-3.65815,8.77326 -7.12762,17.09843 -11.16967,26.79934c7.07259,0 13.00529,0.35638 18.84889,-0.21619c1.78846,-0.17295 3.9595,-2.59293 4.8688,-4.50062c2.69775,-5.65624 5.13215,-11.47888 7.12631,-17.41813c1.37312,-4.08528 3.70925,-5.18587 7.80239,-5.18456c91.74456,0.09696 183.48781,0.03276 275.22974,0.23322c3.66601,0.00655 7.3294,2.31648 9.39693,3.01352c5.08498,-1.22768 9.0851,-2.8196 13.16252,-3.04496c8.01989,-0.44286 16.09611,-0.38521 24.11207,0.05241c2.06098,0.11268 5.02471,1.95092 5.83443,3.76821c5.97856,13.43504 11.51557,27.06662 17.26352,40.80171c-157.78251,0.00262 -317.07439,0.00262 -476.94408,0.00262z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M645.80036,213.66712c4.19796,6.70049 7.60716,12.14054 11.58108,18.47941c2.04526,-4.70633 2.72396,-9.68125 5.54356,-11.77761c2.67679,-1.99154 7.59406,-0.97743 12.31087,-1.34691c0,-5.9078 0,-11.56535 0,-17.74699c26.82947,0 52.84792,0 79.71014,0c0,5.72961 0,11.38323 0,17.79809c5.17932,0 9.57381,0 14.56053,0c0,19.92197 0,39.07745 0,59.09638c-3.25198,0 -6.19736,0 -9.14668,0c-62.123,0.00262 -124.24861,0.00262 -186.3703,0.00262c-15.4672,0 -15.4672,0 -18.48596,-15.97295c2.20904,-0.28956 4.39842,-0.57781 6.63498,-0.86999c-2.54839,-22.67213 13.36298,-38.88878 20.49454,-58.16481c1.77273,-4.78625 11.93615,-3.93198 14.09802,0.98267c6.17116,14.02989 12.50479,28.02047 17.77058,42.39494c1.52903,4.17569 -0.32232,9.58691 -0.6276,14.48716c6.9075,2.23786 11.19063,0.2948 14.11243,-7.19837c5.10202,-13.08784 11.33475,-25.73412 17.81382,-40.16363z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M768.34831,286.02821c6.58257,20.38317 12.9424,40.07322 19.35071,59.91658c-73.71062,0 -148.39868,0 -223.07756,0c1.09142,-9.97736 2.92442,-19.82501 3.0371,-29.69231c0.11399,-9.93019 -1.47793,-19.88004 -2.3584,-30.22426c67.95481,0 136.17952,0 203.04815,0z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M242.70317,614.03905c3.46292,-11.94532 6.59043,-22.73502 9.74807,-33.63085c94.94282,0 199.6455,0.1926 294.68265,0.1926c0,23.36917 0,16.8246 0,40.57504c-2.40688,0.14806 -15.29949,0.26204 -17.9265,0.26204c-88.94592,0.02751 -177.89446,0.1664 -266.84037,-0.28432c-6.30087,-0.02882 -12.58209,-4.44166 -19.66385,-7.11452z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M252.1892,563.26784c0,-13.3787 0,-26.37089 0,-39.89634c48.67616,0 284.03183,-0.82413 314.05563,-0.82413c0,0 -14.43606,33.63085 -16.59662,40.72048c-94.79869,0 -202.14803,0 -297.45902,0z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M111.53264,621.09592c-2.28372,-1.07569 -10.08873,0 -10.08873,0c0,-146.59974 55.25218,-258.38811 113.23486,-341.81799c79.50051,-98.18431 180.48608,-162.98672 304.81986,-189.68648c43.00944,-9.23315 86.52593,-12.15233 130.41453,-10.38222c1.92341,0.0773 3.83896,0.3328 6.03358,0.52933c-0.77827,6.05586 -3.30963,8.25442 -9.46899,8.09588c-93.73872,-2.41474 -182.16317,17.93698 -264.08497,63.90097c-248.54177,152.22453 -261.34267,371.63608 -270.86014,469.3605z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M780.71159,96.59591c84.90781,16.62413 150.77935,49.51863 216.91164,104.39085c76.5014,63.47646 129.55502,142.92063 159.32857,237.77304c18.26453,58.18577 24.80255,117.85996 21.75759,178.68976c-0.28694,5.72175 -2.59818,7.01494 -8.16794,4.95265c4.66309,-123.42055 -28.74633,-235.4487 -104.44588,-333.57012c-75.59604,-97.9904 -165.37788,-156.81032 -286.50292,-183.81405c0.33411,-2.4986 0.67084,-5.04961 1.11893,-8.42212z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M676.17924,107.91232c26.42723,0 51.69623,0 79.06158,0c0,5.32082 0.36293,7.87183 -0.09041,12.96991c-0.62236,7.00446 1.14776,12.5454 6.65463,17.31724c1.76749,1.53034 3.03972,6.23667 2.00202,7.97927c-7.77749,13.07604 -9.83193,27.10986 -8.59245,41.9285c0.10351,1.23947 -0.04586,2.50646 -0.15854,3.75248c-0.04455,0.46382 -0.31838,0.90668 -0.68525,1.89196c-25.97652,0 -52.13777,0 -79.13364,0c0,-3.11833 -0.17164,-5.82657 0.03014,-8.50598c1.01149,-13.25685 -0.65773,-25.92018 -7.13024,-37.82226c-1.05342,-1.93651 -1.2172,-6.31266 -0.02751,-7.201c8.83485,-6.60222 8.42212,-15.80262 8.08802,-25.14452c-0.10875,-2.98469 -0.01834,-3.35811 -0.01834,-7.16562z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M717.00584,-4.0228c11.12381,22.86604 22.20438,45.62596 33.27054,68.39504c4.60544,9.48079 9.1113,19.01005 13.79536,28.45153c2.7685,5.57894 1.02853,7.98975 -4.99982,7.98451c-28.88784,-0.02489 -57.77698,-0.00786 -86.66613,-0.02227c-5.16884,-0.00262 -7.92162,-1.80025 -5.14132,-7.36346c16.04239,-32.10182 32.09658,-64.20101 48.17565,-96.28711c0.18081,-0.36293 0.72193,-0.54898 1.56572,-1.15824z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M471.36097,345.94086c-30.33694,0 -59.82879,0 -90.54832,0c3.79441,-6.4201 7.04508,-11.98201 10.35209,-17.50722c7.61241,-12.71966 15.40562,-25.33058 22.79136,-38.17995c2.32041,-4.03942 5.23566,-3.56119 9.6236,-4.15079c12.35673,-1.65874 19.65992,1.1281 24.48548,13.21755c5.46757,13.6984 13.3263,26.43903 20.10933,39.61596c1.10452,2.15139 2.00988,4.4076 3.18647,7.00446z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M841.11426,345.72729c-12.77207,0 -24.69381,0 -37.72137,0c0,-4.61854 0.31314,-9.06413 -0.11268,-13.43898c-0.27646,-2.80912 -0.83985,-6.36114 -2.6781,-8.09064c-4.60675,-4.33029 -5.06664,-8.57411 -2.21559,-13.85956c1.17527,-2.18414 1.77535,-4.6775 2.64272,-7.03067c7.1761,-19.52497 8.22297,-20.25214 28.87997,-17.52557c1.94044,0.25418 4.24513,2.30338 5.26579,4.14031c3.15371,5.689 5.44791,11.86015 8.67893,17.50067c3.74855,6.54588 6.04145,12.43796 -1.12155,18.35101c-1.33905,1.10714 -1.44256,4.09052 -1.55,6.23405c-0.22405,4.42987 -0.06813,8.87939 -0.06813,13.71936z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M870.31917,398.29089c4.96575,-14.67845 9.56071,-28.6402 14.57756,-42.44735c0.47954,-1.31809 3.57036,-2.31517 5.48722,-2.37675c8.0212,-0.26204 16.06467,-0.26598 24.08586,0.00786c1.89458,0.06289 4.93824,1.12941 5.42564,2.47108c5.02602,13.81632 9.63277,27.78594 14.57101,42.34515c-21.67505,0 -42.31764,0 -64.14729,0z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M336.97646,454.34754c-22.13756,0 -43.14046,0 -64.94391,0c0.70228,-1.94699 1.12024,-3.79834 1.98892,-5.40861c6.79483,-12.58733 13.97355,-24.97681 20.41985,-37.73971c3.92936,-7.77618 10.50407,-3.38562 15.85765,-4.52945c4.33946,-0.92764 6.1122,1.73081 7.6753,5.30903c6.09648,13.9421 12.43141,27.77939 19.00219,42.36874z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M528.84708,294.24201c5.38633,17.10629 10.77136,34.2139 16.33326,51.87573c-11.94401,0 -22.93024,0 -35.29352,0c5.9327,-17.77451 11.66624,-34.94894 17.39716,-52.12336c0.52278,0.08254 1.04294,0.1664 1.5631,0.24763z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M905.03881,308.61255c4.01191,12.17199 8.02644,24.34267 12.25846,37.18156c-9.90137,0 -18.61174,0 -28.79612,0c5.0234,-12.70001 9.83062,-24.85103 14.63652,-37.00075c0.63284,-0.06158 1.2683,-0.12185 1.90114,-0.18081z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M397.6569,234.37522c10.54076,-2.81174 21.08152,-5.62348 32.20401,-8.59114c0,5.61693 0,10.50276 0,16.09087c-10.93121,-2.0505 -21.451,-4.02501 -31.96948,-5.9969c-0.0773,-0.50051 -0.15592,-1.00101 -0.23453,-1.50283z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M556.20327,154.27463c10.29575,-2.74099 20.59018,-5.48198 31.67599,-8.43523c0,5.55404 0,10.34947 0,15.9415c-10.77922,-2.00071 -21.27019,-3.95033 -31.76247,-5.89863c0.03014,-0.53588 0.05765,-1.07176 0.08647,-1.60765z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M684.96822,-29.0494c10.03763,-2.68465 20.07657,-5.37061 30.95799,-8.28062c0,5.12167 0,9.64718 0,15.86289c-10.28657,-1.86838 -20.64128,-3.74462 -30.99599,-5.62348c0.01441,-0.6538 0.0262,-1.30629 0.038,-1.95879z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M903.83865,270.17056c0,5.86588 0,10.54207 0,16.17735c-10.99672,-2.08195 -21.41955,-4.05515 -31.84239,-6.02965c0.00262,-0.53195 0.00262,-1.06259 0.00262,-1.59192c10.26823,-2.75933 20.53384,-5.51867 31.83977,-8.55577z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M819.43266,217.70523c0,5.77154 0,10.2132 0,16.06074c-10.8146,-1.9601 -21.1431,-3.83241 -31.4716,-5.70603c-0.09041,-0.60794 -0.18081,-1.21589 -0.27122,-1.82514c10.29968,-2.76588 20.59804,-5.53439 31.74282,-8.52956z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M810.14055,277.98867c3.25067,-8.96587 6.10172,-16.82198 9.75724,-26.90809c4.11542,10.09266 7.40146,18.15316 10.97313,26.90809c-7.26258,0 -13.41539,0 -20.73038,0z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M273.54324,355.20152c10.27085,-2.74754 20.54301,-5.49377 31.52663,-8.43261c0,5.50556 0,10.30361 0,15.93888c-10.75301,-2.01251 -21.15096,-3.95819 -31.5489,-5.90256c0.00655,-0.53588 0.01441,-1.07045 0.02227,-1.60372z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M429.90022,259.53415c3.21005,6.64546 5.73747,11.88112 8.62128,17.85181c-6.25108,0 -11.38323,0 -17.97235,0c3.07641,-5.87374 5.75058,-10.97706 9.35107,-17.85181z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M962.9062,398.04063c2.38723,-6.18426 4.51634,-11.70031 7.42635,-19.24458c2.72789,7.21017 4.82163,12.75373 7.27699,19.24458c-5.16098,0 -9.42445,0 -14.70334,0z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M299.59051,395.92462c2.53791,-4.77053 4.46656,-8.39592 7.29664,-13.72067c2.04788,5.56321 3.43672,9.33535 5.05092,13.72067c-4.26347,0 -7.68185,0 -12.34756,0z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M872.90948,522.9758c0.14937,0.05503 0.28694,0.11661 0.43499,0.17164l-57.31185,-0.13364c0.09041,-0.03407 0.17819,-0.07206 0.2686,-0.10482c-34.78516,0 -67.29838,-0.36162 -101.99838,-0.36162c6.10303,10.42677 12.31611,41.25767 15.5314,40.36147h184.07479c31.93411,0 63.25372,0 94.72532,0c0,-13.51104 0,-26.49405 0,-39.93303c-44.99705,0 -89.18307,0 -135.72487,0z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                              <path d="M1016.33586,587.40087c-1.08094,-4.47049 -2.9729,-6.01 -7.65171,-5.98118c-33.43825,0.19784 -66.87256,0.19915 -100.30819,-0.00393c-1.16217,-0.00786 -2.16056,0.1153 -3.04627,0.35638l-151.86946,-0.35638l0.08123,0.38521c-2.65583,0 -5.64183,-2.44488 -19.35464,-1.39146v39.85573l129.94809,2.17628c-0.1664,0.12185 -0.29873,0.22143 -0.47168,0.35114c54.57086,0 107.69654,0 162.1508,0c-3.42886,-12.6476 -6.7149,-23.95484 -9.47817,-35.39179z" id="Path 1" fill="#000000" fill-rule="evenodd"/>
-                           </g>
-                        </g>
-                     </g>
-                  </g>
-               </svg>
+document.addEventListener("DOMContentLoaded", function() {
+    
+    // 1. Inject HTML: We restore the 'logo-container' and 'sliding-background' divs here
+    document.body.insertAdjacentHTML('afterbegin', `
+    
+    <div id="installHeaderWrap" class="fixed-top px-md-5" style="z-index: 1020;" hidden>
+        <header class="d-flex align-items-center justify-content-center glasscard top-overlay py-2 position-relative" id="installHeader">
+            <button type="button" 
+                    class="btn-close btn-close-white position-absolute start-0 top-50 translate-middle-y ms-3 z-2" 
+                    aria-label="Close" 
+                    id="closeInstall"></button>
+
+            <div class="text-center w-100 px-5"> 
+                <button type="button" id="installButtonAction" class="btn btn-outline-primary glassbutton text-white border-white">
+                    Install App
+                </button>
+            </div>
+        </header>
+    </div>
+
+    <div class="position-fixed top-0 end-0 p-3" style="z-index: 1030;">
+        <button class="btn btn-outline-light glassbutton" 
+                type="button" 
+                data-bs-toggle="offcanvas" 
+                data-bs-target="#mobileMenu" 
+                aria-controls="mobileMenu">
+            <i class="bi bi-list fs-4"></i>
+        </button>
+    </div>
+
+    <div class="offcanvas offcanvas-end text-white" 
+         tabindex="-1" 
+         id="mobileMenu" 
+         aria-labelledby="mobileMenuLabel"
+         style="backdrop-filter: blur(10px); background-color: #18192fea;">
+        
+        <div class="offcanvas-header border-bottom border-secondary">
+            <h5 class="offcanvas-title" id="mobileMenuLabel">Menu</h5>
+            <button type="button" class="btn-close btn-close-white me-sm-2" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        
+        <div class="offcanvas-body">
+            <nav class="nav flex-column gap-3 fs-6">
+                <a class="nav-link text-light d-flex align-items-center" href="/">
+                    <i class="bi bi-house me-3"></i> Home
+                </a>
+                <a class="nav-link text-light d-flex align-items-center noNewTab" href="LLSR.html">
+                    <i class="bi bi-table me-3"></i> Lightning Lanes
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <div id="logo-container" class="position-relative text-center pt-5">
+        <div class="sliding-background"></div>
+        
+        <a href="/" class="noNewTab link-light link-underline link-underline-opacity-0 d-block">
+	        <svg width="250" class="m-3 translate-middle-x start-50 position-relative" height="auto" id="logo" viewBox="100 -50 1100 700" xmlns="http://www.w3.org/2000/svg">
+    <style>
+        .logo-path { fill: #000; fill-rule: evenodd; }
+    </style>
+    <g class="logo-path">
+        <path d="M369.986 455.789c3.105-15.936 5.83-30.727 9.042-45.414.405-1.842 3.14-3.697 5.205-4.506 1.964-.766 4.462-.175 6.724-.175 174.757 0 349.513.029 524.268-.065 12.914-.007 26.205-1.91 33.06 14.564 3.922-4.399 6.391-7.838 9.535-10.469 2.275-1.9 5.39-3.698 8.227-3.863 13.312-.773 13.353-.575 17.79 11.919 4.42 12.454 8.778 24.929 13.376 38.009-209.531 0-417.866 0-627.228 0z"/>
+        <path d="M230.595 511.338c11.02-15.226 21-29.384 31.519-43.131 1.508-1.97 5.627-2.711 8.541-2.719 43.753-.122 87.505-.014 131.257.021 133.018.111 266.036.203 399.054.324 64.12.06 128.238.242 192.357.122 5.597-.01 9.305 1.69 12.884 5.866 10.938 12.755 22.253 25.184 34.582 39.04-3.678.261-5.965.569-8.249.569-106.867.024-213.737.054-320.604-.135-3.666-.005-7.939-1.439-10.899-3.61-37.746-27.685-81.264-33.186-129.276 4.114-2.977 1.756-156.277-.086-159.435-.081-58.839.122-117.68.09-176.521.074-1.194-.004-2.387-.202-5.211-.454z"/>
+        <path d="M381.301 398.104v-44.307h104.468c-3.658 8.773-7.128 17.098-11.17 26.799 7.073 0 13.006.357 18.849-.216 1.789-.173 3.96-2.593 4.869-4.5 2.698-5.657 5.132-11.479 7.126-17.419 1.373-4.085 3.709-5.186 7.803-5.184 91.744.097 183.487.033 275.229.233 3.666.007 7.33 2.316 9.397 3.014 5.085-1.228 9.085-2.82 13.163-3.045 8.02-.443 16.096-.385 24.112.052 2.061.113 5.025 1.951 5.834 3.769 5.979 13.435 11.516 27.066 17.264 40.801-157.783 0-317.074 0-476.944 0z"/>
+        <path d="M645.8 213.667c4.198 6.7 7.607 12.14 11.581 18.479 2.045-4.706 2.724-9.681 5.544-11.777 2.677-1.992 7.594-.978 12.311-1.347v-17.747h79.71v17.798c5.179 0 9.574 0 14.56 0v59.096h-9.146c-62.123 0-124.249 0-186.37 0-15.468 0-15.468 0-18.486-15.973 2.209-.29 4.398-.578 6.635-.87-2.548-22.672 13.363-38.889 20.495-58.165 1.772-4.786 11.936-3.932 14.098.983 6.171 14.03 12.505 28.02 17.77 42.395 1.529 4.175-.322 9.587-.627 14.487 6.907 2.238 11.19 0.295 14.112-7.198 5.102-13.088 11.335-25.735 17.814-40.164z"/>
+        <path d="M768.348 286.028c6.583 20.383 12.943 40.073 19.351 59.917-73.71 0-148.398 0-223.077 0 1.091-9.977 2.924-19.825 3.037-29.692.114-9.93-1.478-19.88-2.358-30.224 67.955 0 136.179 0 203.048 0z"/>
+        <path d="M242.703 614.039c3.463-11.945 6.59-22.735 9.748-33.631 94.943 0 199.646.193 294.683.193 0 23.369 0 16.824 0 40.575-2.407.148-15.3.262-17.927.262-88.946.027-177.894.166-266.84-.284-6.301-.029-12.582-4.442-19.664-7.115z"/>
+        <path d="M252.189 563.268v-39.896c48.676 0 284.032-.824 314.056-.824 0 0-14.436 33.631-16.597 40.72h-297.459z"/>
+        <path d="M111.533 621.096s-7.805 1.076-10.089 0c0-146.6 55.252-258.388 113.235-341.818 79.5-98.184 180.486-162.987 304.82-189.686 43.009-9.233 86.526-12.152 130.414-10.382 1.924.077 3.839.333 6.034.529-.778 6.056-3.31 8.255-9.469 8.096-93.739-2.415-182.163 17.937-264.085 63.901-248.542 152.225-261.343 371.636-270.86 469.36z"/>
+        <path d="M780.712 96.596c84.907 16.624 150.779 49.518 216.911 104.39 76.502 63.477 129.555 142.921 159.329 237.774 18.264 58.185 24.803 117.86 21.758 178.69-.287 5.721-2.598 7.014-8.168 4.952 4.663-123.42-28.746-235.448-104.446-333.57-75.596-97.99-165.378-156.81-286.503-183.814.334-2.499.671-5.05 1.119-8.422z"/>
+        <path d="M676.179 107.912h79.062c0 5.321.363 7.872-.09 12.97-.623 7.004 1.147 12.545 6.654 17.317 1.768 1.53 3.04 6.237 2.002 7.979-7.777 13.076-9.832 27.11-8.592 41.929.104 1.239-.046 2.506-.159 3.752-.044.464-.318.907-.685 1.892h-79.134c0-3.118-.171-5.827.03-8.506 1.012-13.257-.658-25.92-7.13-37.822-1.054-1.937-1.217-6.313-.028-7.201 8.835-6.602 8.422-15.803 8.088-25.145-.109-2.984-.018-3.358-.018-7.165z"/>
+        <path d="M717.006-4.023c11.124 22.866 22.204 45.626 33.27 68.395 4.606 9.481 9.112 19.01 13.796 28.452 2.768 5.579 1.028 7.99-5 7.984-28.888-.025-57.777-.008-86.666-.022-5.169-.003-7.922-1.8-5.141-7.363 16.042-32.102 32.096-64.201 48.175-96.288.181-.362.722-.548 1.566-1.158z"/>
+        <path d="M471.361 345.941h-90.548c3.794-6.42 7.045-11.982 10.352-17.507 7.612-12.72 15.406-25.33 22.791-38.18 2.32-4.04 5.236-3.561 9.624-4.15 12.356-1.66 19.66 1.127 24.485 13.217 5.468 13.699 13.326 26.439 20.11 39.616 1.104 2.152 2.01 4.408 3.186 7.004z"/>
+        <path d="M841.114 345.727h-37.721c0-4.618.313-9.064-.113-13.439-.276-2.809-.84-6.361-2.678-8.09-4.607-4.331-5.067-8.575-2.216-13.86 1.175-2.184 1.775-4.678 2.643-7.031 7.176-19.525 8.223-20.252 28.88-17.525 1.94.254 4.245 2.303 5.266 4.14 3.153 5.689 5.448 11.86 8.679 17.501 3.748 6.546 6.041 12.438-1.122 18.351-1.339 1.107-1.442 4.09-1.55 6.234-.224 4.43-.068 8.879-.068 13.719z"/>
+        <path d="M870.319 398.291c4.966-14.678 9.561-28.64 14.578-42.447.479-1.318 3.57-2.315 5.487-2.377 8.021-.262 16.065-.266 24.086.008 1.894.063 4.938 1.13 5.425 2.471 5.026 13.816 9.633 27.786 14.571 42.345h-64.147z"/>
+        <path d="M336.976 454.348h-64.944c.702-1.947 1.12-3.798 1.989-5.408 6.795-12.588 13.974-24.977 20.42-37.74 3.93-7.776 10.504-3.386 15.858-4.529 4.339-.928 6.112 1.73 7.675 5.309 6.096 13.942 12.431 27.779 19.002 42.368z"/>
+        <path d="M528.847 294.242c5.386 17.106 10.771 34.214 16.333 51.876h-35.293c5.932-17.775 11.666-34.949 17.397-52.124.523.083 1.043.167 1.563.248z"/>
+        <path d="M905.039 308.613c4.012 12.172 8.026 24.342 12.258 37.181h-28.796c5.023-12.7 9.83-24.851 14.636-37 0.633-.062 1.269-.122 1.902-.181z"/>
+        <path d="M397.657 234.375c10.54-2.812 21.081-5.623 32.204-8.591v16.091c-10.931-2.05-21.451-4.025-31.969-5.997-.078-.5-.156-1-.235-1.503z"/>
+        <path d="M556.203 154.275c10.296-2.741 20.59-5.482 31.676-8.435v15.941c-10.779-2.001-21.27-3.95-31.762-5.898 0.03-.536 0.058-1.072 0.086-1.608z"/>
+        <path d="M684.968-29.049c10.038-2.685 20.077-5.371 30.958-8.281v15.863c-10.287-1.869-20.641-3.745-30.996-5.624 0.014-.653 0.026-1.306 0.038-1.958z"/>
+        <path d="M903.839 270.17v16.178c-10.997-2.082-21.42-4.055-31.843-6.03 0-.532 0-1.063 0-1.592 10.268-2.759 20.534-5.519 31.84-8.556z"/>
+        <path d="M819.433 217.705v16.061c-10.815-1.96-21.143-3.833-31.472-5.706-.09-.608-.18-1.216-.271-1.825 10.3-2.766 20.598-5.534 31.743-8.53z"/>
+        <path d="M810.14 277.989c3.251-8.966 6.102-16.822 9.758-26.908 4.115 10.092 7.401 18.153 10.973 26.908h-20.731z"/>
+        <path d="M273.543 355.202c10.271-2.748 20.543-5.494 31.527-8.433v15.939c-10.753-2.013-21.151-3.958-31.549-5.903.007-.536 0.014-1.07 0.022-1.603z"/>
+        <path d="M429.9 259.534c3.21 6.646 5.738 11.881 8.621 17.852h-17.972c3.076-5.874 5.75-10.977 9.351-17.852z"/>
+        <path d="M962.906 398.041c2.387-6.185 4.516-11.7 7.426-19.245 2.728 7.21 4.822 12.754 7.277 19.245h-14.703z"/>
+        <path d="M299.59 395.925c2.538-4.771 4.467-8.396 7.297-13.721 2.048 5.563 3.437 9.335 5.051 13.721h-12.348z"/>
+        <path d="M872.91 522.976c.149.055.286.116.434.171l-57.312-.133c.09-.034.178-.072.269-.105-34.785 0-67.298-.362-101.998-.362 6.103 10.427 12.316 41.258 15.531 40.362h184.075c31.934 0 63.254 0 94.725 0 0-13.511 0-26.494 0-39.933-44.997 0-89.183 0-135.724 0z"/>
+        <path d="M1016.336 587.401c-1.081-4.47-2.973-6.01-7.652-5.981-33.438.198-66.872.199-100.308-.004-1.162-.008-2.16.115-3.046.356l-151.87-.356.082.385c-2.656 0-5.642-2.445-19.355-1.391v39.856l129.948 2.176c-.166.122-.299.221-.472.351 54.571 0 107.697 0 162.151 0-3.429-12.647-6.715-23.955-9.478-35.392z"/>
+    </g>
+</svg>
             <h1 id="header">Disneyland Notepad</h1>
-            <h2 id="snippet"></h2>
-      </div>
-      </a>`);
+            <h2 id="snippet" class="h5"></h2>
+        </a>
+    </div>
+    `);
+    let installPrompt = null;
+    const installHeaderWrap = document.getElementById("installHeaderWrap");
+    const installButtonAction = document.getElementById("installButtonAction");
+    const closeInstall = document.getElementById("closeInstall");
 
-   // Hamburger menu JS
-   const btn = document.getElementById('hamburger-btn');
-   const sidebar = document.getElementById('hamburger-sidebar');
-   const closeBtn = document.getElementById('hamburger-close');
-   const overlay = document.getElementById('hamburger-overlay');
+    const disableInAppInstallPrompt = () => {
+        installPrompt = null;
+        if (installHeaderWrap) {
+			installHeaderWrap.setAttribute("hidden", "");
 
-   function openSidebar() {
-      sidebar.classList.add('open');
-      overlay.classList.add('open');
-   }
-   function closeSidebar() {
-      sidebar.classList.remove('open');
-      overlay.classList.remove('open');
-   }
-   btn.addEventListener('click', openSidebar);
-   closeBtn.addEventListener('click', closeSidebar);
-   overlay.addEventListener('click', closeSidebar);
-   document.addEventListener('keydown', function(e){
-      if (e.key === "Escape") closeSidebar();
-   });
+		}
+    };
 
-   document.getElementById("footer").innerHTML = `      <div class="linksWrapper">
-         <h4 class="linksTitle">Helpful links</h4>
-      </div>
-      <div class="b-example-divider"></div>
-      <div class="container">
-         <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-4 py-5 my-5 border-top">
-            <div class="col mb-3">
-               <p class="text-body-secondary">By Liam Martin | 2026</p>
-               <div class="btn-group" role="group" aria-label="Outlined button group">
-                  <a class="btn btn-outline-primary" href="https://forms.gle/65Een6CEYxmPe9AS6" data-bs-toggle="tooltip" data-bs-title="Suggest an edit" target="_blank"><i class="bi bi-input-cursor-text"></i></a>
-                  <a class="btn btn-outline-primary" href="https://github.com/chipShot-exe" data-bs-toggle="tooltip" data-bs-title="Github" target="_blank"><i class="bi bi-github"></i></a>
-                  <a class="btn btn-outline-primary" href="mailto:leeyummartin@gmail.com" data-bs-toggle="tooltip" data-bs-title="Email Me" target="_blank"><i class="bi bi-envelope-paper-fill"></i></a>
-               </div>
-            </div>
-            <!-- Section 1 -->
-            <div class="col mb-3">
-               <h5>Resources</h5>
-               <ul class="nav flex-column">
-                  <li class="nav-item mb-2 linkFit">
-                     <a href="https://cdn1.parksmedia.wdprapps.disney.com/vision-dam/digital/parks-platform/parks-global-assets/disneyland/guest-services/maps/FY24_DL_Winter_1_08_24_to_4_04_24.pdf?2024-01-12T21:52:56+00:00" class="link-underline-dark link-offset-3 nav-link p-0">Disneyland Park Map</a>
-                  </li>
-                  <li class="nav-item mb-2 linkFit">
-                     <a href="https://www.youtube.com/watch?v=G4hMCNkYQD8" class="link-underline-dark link-offset-3 nav-link p-0">How to share Google Maps location</a>
-                  </li>
-               </ul>
-            </div>
-            <div class="col mb-3">
-               <h5>News</h5>
-               <ul class="nav flex-column">
-                  <li class="nav-item mb-2 linkFit">
-                     <a href="https://disneyparksblog.com/dlr/" class="link-underline-dark link-offset-3 nav-link p-0">Official Disney Parks blog</a>
-                  </li>
-                  <li class="nav-item mb-2 linkFit">
-                     <a href="https://www.reddit.com/r/Disneyland/" class="link-underline-dark link-offset-3 nav-link p-0">Disneyland subreddit (Forum thread)</a>
-                  </li>
-               </ul>
-            </div>
-            <div class="col mb-3">
-               <h5>Fun stuff</h5>
-               <ul class="nav flex-column">
-                  <li class="nav-item mb-2 linkFit">
-                     <a href="http://soundsofdisneyland.com/" class="link-underline-dark link-offset-3 nav-link p-0">Disneyland ambient music</a>
-                  </li>
-                  <li class="nav-item mb-2 linkFit">
-                     <a href="#" class="link-underline-dark link-offset-3 nav-link p-0 text-body-secondary" data-bs-toggle="tooltip" data-bs-title="Check back here later for some useful links!">Coming soon!</a>
-                  </li>
-               </ul>
-            </div>
-                        <div class="col mb-3">
-               <h5>Blogs and Unofficial</h5>
-               <ul class="nav flex-column">
-                  <li class="nav-item mb-2 linkFit">
-                     <a href="Mouseplanet.com" class="link-underline-dark link-offset-3 nav-link p-0">Mouseplanet.com</a>
-                  </li>
-                  <li class="nav-item mb-2 linkFit">
-                     <a href="Disneytouristblog.com" class="link-underline-dark link-offset-3 nav-link p-0">Disney tourist blog</a>
-                  </li>
-               </ul>
-            </div>
-         </footer>`;
-})
-document.addEventListener("DOMContentLoaded", function () {
-    const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-    tooltipTriggerList.forEach(el => new bootstrap.Tooltip(el));
+    window.addEventListener("beforeinstallprompt", (event) => {
+        event.preventDefault();
+        installPrompt = event;
+        if (installHeaderWrap) installHeaderWrap.removeAttribute("hidden");
+    });
+
+    if (installButtonAction) {
+        installButtonAction.addEventListener("click", async () => {
+            if (!installPrompt) return;
+            const result = await installPrompt.prompt();
+            console.log(`Install prompt result: ${result.outcome}`);
+            disableInAppInstallPrompt();
+        });
+    }
+
+    if (closeInstall) {
+        closeInstall.addEventListener("click", disableInAppInstallPrompt);
+    }
+    const snippets = [
+        "It's a Small World has a sun and moon in every room, because everyone lives under the same sky.",
+        "Disneyland opened on July 17th, 1955!",
+        "Gum is not sold anywhere in Disneyland!",
+		"You can go to Disneyland in Google Street View!"
+    ];
+    const quoteWrap = document.getElementById("snippet");
+    if (quoteWrap) {
+        const randomIndex = Math.floor(Math.random() * snippets.length);
+        quoteWrap.innerHTML = snippets[randomIndex];
+    }
+    const footerEl = document.getElementById("footer");
+    if (footerEl) {
+        footerEl.innerHTML = `
+        <div class="linksWrapper"><h4 class="linksTitle">Helpful links</h4></div>
+        <div class="b-example-divider"></div>
+        <div class="container">
+            <footer class="row row-cols-1 row-cols-sm-2 row-cols-md-4 py-5 my-5 border-top">
+                <div class="col mb-3">
+                    <p class="text-body-secondary">By Liam Martin | 2026</p>
+                    <div class="btn-group" role="group">
+                         <a class="btn btn-outline-primary" href="https://forms.gle/65Een6CEYxmPe9AS6" data-bs-toggle="tooltip" data-bs-title="Suggest an edit" target="_blank"><i class="bi bi-input-cursor-text"></i></a>
+                         <a class="btn btn-outline-primary" href="https://github.com/chipShot-exe" data-bs-toggle="tooltip" data-bs-title="Github" target="_blank"><i class="bi bi-github"></i></a>
+                         <a class="btn btn-outline-primary" href="mailto:leeyummartin@gmail.com" data-bs-toggle="tooltip" data-bs-title="Email Me" target="_blank"><i class="bi bi-envelope-paper-fill"></i></a>
+                    </div>
+                </div>
+                <div class="col mb-3">
+                    <h5>Resources</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2 linkFit"><a href="https://cdn1.parksmedia.wdprapps.disney.com/vision-dam/digital/parks-platform/parks-global-assets/disneyland/guest-services/maps/FY24_DL_Winter_1_08_24_to_4_04_24.pdf?2024-01-12T21:52:56+00:00" class="link-underline-dark link-offset-3 nav-link p-0">Disneyland Park Map</a></li>
+                        <li class="nav-item mb-2 linkFit"><a href="https://www.youtube.com/watch?v=G4hMCNkYQD8" class="link-underline-dark link-offset-3 nav-link p-0">How to share Google Maps location</a></li>
+                        <li class="nav-item mb-2 linkFit"><a href="https://www.thrill-data.com/" class="link-underline-dark link-offset-3 nav-link p-0">Thrill Data (Extensive graphs)</a></li>
+						</ul>
+                </div>
+                <div class="col mb-3">
+                    <h5>News</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2 linkFit"><a href="https://disneyparksblog.com/dlr/" class="link-underline-dark link-offset-3 nav-link p-0">Official Disney Parks blog</a></li>
+                        <li class="nav-item mb-2 linkFit"><a href="https://www.reddit.com/r/Disneyland/" class="link-underline-dark link-offset-3 nav-link p-0">Disneyland subreddit</a></li>
+                    </ul>
+                </div>
+                <div class="col mb-3">
+                    <h5>Fun stuff</h5>
+                    <ul class="nav flex-column">
+                        <li class="nav-item mb-2 linkFit"><a href="http://soundsofdisneyland.com/" class="link-underline-dark link-offset-3 nav-link p-0">Disneyland ambient music</a></li>
+                        <li class="nav-item mb-2 linkFit"><a href="https://parkprofessor.net/parkle.html" class="link-underline-dark link-offset-3 nav-link p-0" data-bs-toggle="tooltip" data-bs-title="Guess a park-related word every day!">Parkle</a></li>
+                    </ul>
+                </div>
+            </footer>
+        </div>`;
+        
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+        tooltipTriggerList.forEach((el) => new bootstrap.Tooltip(el));
+        
+        const toastLive = document.getElementById('liveToast');
+        if (toastLive) {
+            const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLive);
+            toastBootstrap.show();
+        }
+        
+        document.querySelectorAll("a").forEach((link) => {
+            link.setAttribute("target", link.classList.contains("noNewTab") ? "_self" : "_blank");
+        });
+    }
 });
