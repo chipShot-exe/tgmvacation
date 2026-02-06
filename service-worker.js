@@ -10,9 +10,9 @@ const PRECACHE_ASSETS = [
   '/pagecommon.js',
   '/DisneylandCropped.jpg',
   '/fuelrod.jpg',
-  '/Unofficial_guide.jpg'
+  '/Unofficial_guide.jpg',
+  'LLSR.html'
 ];
-
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
