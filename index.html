@@ -15,10 +15,14 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
+        <div id="installHeader" hidden class="text-center p-2 bg-light">
+            <p>Want to use this offline?</p>
+            <button id="install" class="hambutton btn btn-success">Install App</button>
+        </div>
         <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
         <div id="qrcode"></div>
         <div class="toast-container position-fixed bottom-0 end-0 p-3">
-            <div id="liveToast" class="toast show text-white" role="alert" aria-live="assertive" aria-atomic="true" data-bs-theme="dark">
+            <div id="liveToast" class="toast show bg-dark text-white" role="alert" aria-live="assertive" aria-atomic="true" data-bs-theme="dark">
                 <div class="toast-header">
                     <i class="bi bi-send-exclamation"></i>
                     <strong class="me-auto">&nbsp Disneyland Notepad</strong>
@@ -26,20 +30,19 @@
                     <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
                 <div class="toast-body">
-                    Welcome! Here you'll find some helpful tools and research I've done. Bear in mind that it is a work in progress, so at certain points things may not work as expected. Thanks for checking it out!
+                    Welcome! Here you'll find some helpful tools and research I've done. Bear in mind that it is a work inprogress, so at certain points things may not work as expected. Thanks for checking it out!
                 </div>
             </div>
         </div>
         </div>
-        <a class="weatherwidget-io d-none d-md-block no-dark" href="https://forecast7.com/en/33d84n117d91/anaheim/?unit=us" data-label_1="ANAHEIM" data-font="Helvetica" data-icons="Climacons Animated" data-theme="original" data-basecolor="rgba(31, 86, 124, 0)" id="weatherTarget" >ANAHEIM</a>
+        <a class="weatherwidget-io d-none d-md-block no-dark" href="https://forecast7.com/en/33d84n117d91/anaheim/?unit=us" data-label_1="ANAHEIM" data-font="Helvetica" data-icons="Climacons Animated" data-theme="original" data-basecolor="rgba(31, 86, 124, 0)" >ANAHEIM</a>
         <script>
             !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
         </script>
         <a class="weatherwidget-io d-block d-md-none no-dark" href="https://forecast7.com/en/33d84n117d91/anaheim/?unit=us" data-label_1="ANAHEIM" data-font="Helvetica" data-icons="Climacons Animated" data-mode="Current" data-theme="original" data-basecolor="rgba(31, 86, 124, 0)" >ANAHEIM</a>
         <div id="weatherLinkWrapper">
-            <a id="weatherHeader" href="https://weather.com/weather/today/l/dda086304f6b62200af6ebb1a07d3f15a8dacdf39c5a3a50996bacbc2416eb29" class="translate-middle-x"><small>Click for more information.</small></a>
+            <a id="weatherHeader" href="https://weather.com/weather/today/l/dda086304f6b62200af6ebb1a07d3f15a8dacdf39c5a3a50996bacbc2416eb29" class="translate-middle"><small>Click for more information.</small></a>
         </div>
-		<div id="showTableWrap"></div>
         <div class="nav_container">
             <div class="tab-content">
                 <!-- Tabs --> 
@@ -235,7 +238,7 @@
             });
         </script>
         <div id="footer"></div>
-        <script src="scripts.js" defer></script>
+        <script src="scripts.js"></script>
         <script src="pageCommon.js"></script>
     </body>
 </html>
